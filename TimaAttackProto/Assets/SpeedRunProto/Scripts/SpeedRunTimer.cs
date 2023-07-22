@@ -34,7 +34,7 @@ public class SpeedRunTimer : MonoBehaviour
     public TextMeshProUGUI[] eventTimeTexts = new TextMeshProUGUI[4];
 
     // 타이머 활성화 플래그
-    private bool isTimerActive = true;
+    public bool isTimerActive = true;
 
     // 싱글톤 인스턴스 설정
     void Awake()
@@ -42,6 +42,7 @@ public class SpeedRunTimer : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -56,8 +57,7 @@ public class SpeedRunTimer : MonoBehaviour
     // 시작 시간 초기화
     void Start()
     {
-        DontDestroyOnLoad(gameObject);
-        startTime = Time.time;
+        startTime = 0f;
         realTimeText.text = $"{startTime:F2}";
     }
 

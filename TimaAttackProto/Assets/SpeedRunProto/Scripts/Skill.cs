@@ -29,32 +29,32 @@ public abstract class Skill
         OnApply?.Invoke(); // 여기서 delegate를 호출하여 실제 동작을 수행합니다.
     }
 
-public void SaveState()
-{
-    SerializedSkill skillToSave = new SerializedSkill();
-    skillToSave.SkillName = this.Name;
-    skillToSave.IsUnlocked = this.IsUnlocked;
-
-    // 스킬을 저장. 세 번째 인자로 폴더 이름을 전달.
-    MMSaveLoadManager.Save(skillToSave, "Skill_" + this.Name, "MyFolder/");
-}
-
-
-public void LoadState()
-{
-    SerializedSkill loadedSkill = (SerializedSkill)MMSaveLoadManager.Load(typeof(SerializedSkill), "Skill_" + this.Name, "MyFolder/");
-
-    if (loadedSkill != null)
+    public void SaveState()
     {
-        this.IsUnlocked = loadedSkill.IsUnlocked;
-        Debug.Log("Skill " + this.Name + " is loaded. Unlocked status: " + this.IsUnlocked);
-    }
-}
+        SerializedSkill skillToSave = new SerializedSkill();
+        skillToSave.SkillName = this.Name;
+        skillToSave.IsUnlocked = this.IsUnlocked;
 
-public void DeleteState()
-{
-    MMSaveLoadManager.DeleteSave("Skill_" + this.Name, "MyFolder/");
-}
+        // 스킬을 저장. 세 번째 인자로 폴더 이름을 전달.
+        MMSaveLoadManager.Save(skillToSave, "Skill_" + this.Name, "MyFolder/");
+    }
+
+
+    public void LoadState()
+    {
+        SerializedSkill loadedSkill = (SerializedSkill)MMSaveLoadManager.Load(typeof(SerializedSkill), "Skill_" + this.Name, "MyFolder/");
+
+        if (loadedSkill != null)
+        {
+            this.IsUnlocked = loadedSkill.IsUnlocked;
+            Debug.Log("Skill " + this.Name + " is loaded. Unlocked status: " + this.IsUnlocked);
+        }
+    }
+
+    public void DeleteState()
+    {
+        MMSaveLoadManager.DeleteSave("Skill_" + this.Name, "MyFolder/");
+    }
 
 
 }
@@ -66,13 +66,21 @@ public class YesDebug : Skill
     public YesDebug()
         : base("YesDebug")
     {
-        OnApply += YesLog;
+        OnApply += EasySwordUp;
     }
 
-    void YesLog()
+    void EasySwordUp()
     {
-        Debug.Log("yes");
+        Debug.Log("Here is EasySword");
+
+        // Load the prefab from the Resources folder
+        GameObject easySword = Resources.Load<GameObject>("EasySwordPicker");
+
+        // Instantiate the prefab
+        GameObject currentSword = UnityEngine.Object.Instantiate(easySword, Vector3.zero, Quaternion.identity);
     }
+
+
 }
 
 

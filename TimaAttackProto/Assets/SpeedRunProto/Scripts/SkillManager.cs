@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.CorgiEngine;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class WeaponData
@@ -62,6 +63,7 @@ public class SkillManager : MonoBehaviour
             foreach (Skill skill in skillList)
             {
                 skill.LoadState();
+                ApplySkill(skill.Name);
             }
         }
     }
@@ -104,6 +106,10 @@ public class SkillManager : MonoBehaviour
         }
         skillButton1.gameObject.SetActive(false);
         skillButton2.gameObject.SetActive(false);
+        Debug.Log($"advanced {currentSkills[0].Name}");
+
+        DestroySingletons();
+        SceneManager.LoadScene(0);
     }
 
 
@@ -115,8 +121,12 @@ public class SkillManager : MonoBehaviour
         if (skillToUnlock != null && !skillToUnlock.IsUnlocked) // If the skill is not already unlocked
         {
             skillToUnlock.Unlock();
-            ApplySkill(skillName);
+            //ApplySkill(skillName);
             AdvanceToNextSkillSet();
+        }
+        else
+        {
+            Debug.Log("스킬을 이미 얻으셨습니다!");
         }
     }
 
@@ -129,5 +139,21 @@ public class SkillManager : MonoBehaviour
             skillToApply.Apply();
         }
     }
+
+    public static void DestroySingletons()
+    {
+
+        Destroy(TimeTextParent.instance.gameObject);
+        Destroy(SpeedRunTimer.Instance.gameObject);
+        Destroy(SkillManager.Instance.gameObject);
+        //어차피 skill은 mmsaveload로 저장이 되니까 괜찬하
+        //이걸로 awake가 발동돼서 scene이 처음으로 돌아오면 스킬 적용도 됨
+        //일단 시간(timer)는 초기화되는 순간 0으로 바꿔줘야 할 듯
+        //문제는 AdvanceToNextSkillSet 이 실행되어도 skillManager가 파괴되니까
+        //currentSkills이 증가하질 않는다.
+        //이 스타트 상황을 어따 저장하고 불러와줘야 할 듯
+        //currentSkills = skillSets[skillIndex]; 이런 식으로 변수로 활용해줘야 할 듯
+    }
+
 }
 

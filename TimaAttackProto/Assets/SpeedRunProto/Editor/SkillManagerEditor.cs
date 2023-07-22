@@ -14,19 +14,19 @@ public class SkillManagerEditor : Editor
 
         SkillManager skillManager = (SkillManager)target;
         if (GUILayout.Button("Delete All Skills"))
-{
-    // Check if 'skillSets' has been initialized
-    if (skillManager.skillSets != null)
-    {
-        foreach (List<Skill> skillList in skillManager.skillSets)
         {
-            foreach (Skill skill in skillList)
+            // Check if 'skillSets' has been initialized
+            if (skillManager.skillSets != null)
             {
-                skill.DeleteState();
+                foreach (List<Skill> skillList in skillManager.skillSets)
+                {
+                    foreach (Skill skill in skillList)
+                    {
+                        skill.DeleteState();
+                    }
+                }
             }
         }
-    }
-}
     }
 }
 #endif

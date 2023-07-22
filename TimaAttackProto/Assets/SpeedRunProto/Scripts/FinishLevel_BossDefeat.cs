@@ -18,14 +18,15 @@ namespace MoreMountains.CorgiEngine
             base.Kill();
             SpeedRunTimer.Instance.OnEventFinished(BossName);
 
-            if (BossName != "scene02")
+            if (BossName != "LastBoss")
             {
                 OpenNextGate();
-                SkillManager.Instance.InitializeSkillButtons();
             }
             else
             {
-                levelSelector.RestartLevel();
+                SpeedRunTimer.Instance.isTimerActive = false;
+                SpeedRunTimer.Instance.OnEventFinished(BossName);
+                SkillManager.Instance.InitializeSkillButtons();
             }
         }
 

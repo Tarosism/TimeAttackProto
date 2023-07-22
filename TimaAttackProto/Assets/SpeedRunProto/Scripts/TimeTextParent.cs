@@ -6,7 +6,7 @@ using MoreMountains.Tools;
 
 public class TimeTextParent : MonoBehaviour
 {
-    TimeTextParent instance;
+    public static TimeTextParent instance;
     void Awake()
     {
         if (instance == null)

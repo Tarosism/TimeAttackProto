@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/SpeedRunProto/Scene/SpeedRunProto.unity
+    guid: 3de25f315f30f454ca1927d551042667
+  - enabled: 1
+    path: Assets/SpeedRunProto/Scene/SpeedRunProto_02.unity
+    guid: 030c6b914276428459b2d4c2324c87ab
+  - enabled: 1
     path: Assets/CorgiEngine/Demos/StartScreen/SplashScreen.unity
     guid: 7b96552fd1198fa4eaae54a2f975645e
   - enabled: 1
@@ -224,7 +230,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/CorgiEngine/ThirdParty/MoreMountains/MMTools/Tools/MMSceneLoading/LoadingScreens/MMAdditiveLoadingScreenSimple.unity
     guid: 945e5b97212e8e74ebcd35bddde3970c
-  - enabled: 1
-    path: Assets/SpeedRunProto/Scene/SpeedRunProto_02.unity
-    guid: 030c6b914276428459b2d4c2324c87ab
   m_configObjects: {}
