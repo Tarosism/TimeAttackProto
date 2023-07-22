@@ -1,0 +1,22 @@
+[
+    {
+        "Name": "Skill1",
+        "Description": "Description of Skill1",
+        "IsUnlocked": false
+    },
+    {
+        "Name": "Skill2",
+        "Description": "Description of Skill2",
+        "IsUnlocked": false
+    },
+    {
+        "Name": "Skill3",
+        "Description": "Description of Skill3",
+        "IsUnlocked": false
+    },
+    {
+        "Name": "Skill4",
+        "Description": "Description of Skill4",
+        "IsUnlocked": false
+    }
+]
