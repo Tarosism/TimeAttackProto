@@ -47,6 +47,7 @@ public abstract class Skill
         if (loadedSkill != null)
         {
             this.IsUnlocked = loadedSkill.IsUnlocked;
+            this.Apply();
             Debug.Log("Skill " + this.Name + " is loaded. Unlocked status: " + this.IsUnlocked);
         }
     }
@@ -61,8 +62,6 @@ public abstract class Skill
 
 public class YesDebug : Skill
 {
-
-
     public YesDebug()
         : base("YesDebug")
     {

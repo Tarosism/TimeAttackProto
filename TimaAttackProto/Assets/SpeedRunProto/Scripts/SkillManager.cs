@@ -43,7 +43,6 @@ public class SkillManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
     void Start()
     {
         skillButton1.gameObject.SetActive(false);
@@ -55,15 +54,15 @@ public class SkillManager : MonoBehaviour
             new List<Skill> { new YeeDebug(), new YoyoDebug() }
             // 필요한만큼 더 추가할 수 있습니다.
         };
-        currentSkills = skillSets[0]; // 처음에는 첫 번째 스킬 세트로 시작
-                                      // 게임 시작 시 각 버튼의 클릭 이벤트를 설정합니다.
+        int loadedSkillSetIndex = PlayerPrefs.GetInt("CurrentSkillSetIndex", 0); // default value is 0
+
+        currentSkills = skillSets[loadedSkillSetIndex]; // 처음에는 첫 번째 스킬 세트로 시작
 
         foreach (List<Skill> skillList in skillSets)
         {
             foreach (Skill skill in skillList)
             {
                 skill.LoadState();
-                ApplySkill(skill.Name);
             }
         }
     }
@@ -93,6 +92,7 @@ public class SkillManager : MonoBehaviour
         if (nextSkillSetIndex < skillSets.Count)
         {
             currentSkills = skillSets[nextSkillSetIndex];
+            PlayerPrefs.SetInt("CurrentSkillSetIndex", nextSkillSetIndex);//playerprefs로 간결하게 숫자 저장
 
             // 여기서 skillButton1과 skillButton2에 대한 클릭 이벤트를 새로운 스킬로 설정합니다.
             string newSkillName1 = currentSkills[0].Name;
@@ -106,7 +106,6 @@ public class SkillManager : MonoBehaviour
         }
         skillButton1.gameObject.SetActive(false);
         skillButton2.gameObject.SetActive(false);
-        Debug.Log($"advanced {currentSkills[0].Name}");
 
         DestroySingletons();
         SceneManager.LoadScene(0);
@@ -121,7 +120,6 @@ public class SkillManager : MonoBehaviour
         if (skillToUnlock != null && !skillToUnlock.IsUnlocked) // If the skill is not already unlocked
         {
             skillToUnlock.Unlock();
-            //ApplySkill(skillName);
             AdvanceToNextSkillSet();
         }
         else
@@ -130,30 +128,23 @@ public class SkillManager : MonoBehaviour
         }
     }
 
-    // 현재 스킬 세트에서 스킬의 효과를 적용하는 메서드
-    public void ApplySkill(string skillName)
-    {
-        Skill skillToApply = currentSkills.Find(skill => skill.Name == skillName);
-        if (skillToApply != null && skillToApply.IsUnlocked)
-        {
-            skillToApply.Apply();
-        }
-    }
+    // // 현재 스킬 세트에서 스킬의 효과를 적용하는 메서드
+    // public void ApplySkill(string skillName)
+    // {
+    //     Skill skillToApply = currentSkills.Find(skill => skill.Name == skillName);
+    //     // skillToApply.Apply();
+
+    //     if (skillToApply != null && skillToApply.IsUnlocked)
+    //     {
+    //         skillToApply.Apply();
+    //     }
+    // }
 
     public static void DestroySingletons()
     {
-
         Destroy(TimeTextParent.instance.gameObject);
         Destroy(SpeedRunTimer.Instance.gameObject);
-        Destroy(SkillManager.Instance.gameObject);
-        //어차피 skill은 mmsaveload로 저장이 되니까 괜찬하
-        //이걸로 awake가 발동돼서 scene이 처음으로 돌아오면 스킬 적용도 됨
-        //일단 시간(timer)는 초기화되는 순간 0으로 바꿔줘야 할 듯
-        //문제는 AdvanceToNextSkillSet 이 실행되어도 skillManager가 파괴되니까
-        //currentSkills이 증가하질 않는다.
-        //이 스타트 상황을 어따 저장하고 불러와줘야 할 듯
-        //currentSkills = skillSets[skillIndex]; 이런 식으로 변수로 활용해줘야 할 듯
+        Destroy(Instance.gameObject);
     }
-
 }
 
