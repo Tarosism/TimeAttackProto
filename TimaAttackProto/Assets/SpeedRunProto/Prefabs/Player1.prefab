@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8405609518173344843}
   - component: {fileID: 5602905485635952728}
   - component: {fileID: 873175408338779219}
+  - component: {fileID: -2398090789411659119}
   - component: {fileID: 2863816354752698861}
   - component: {fileID: 6034055208717855294}
   - component: {fileID: 4703005967543804522}
@@ -31,7 +32,6 @@ GameObject:
   - component: {fileID: -2898158724942247049}
   - component: {fileID: 5345347505115744405}
   - component: {fileID: 263403022790858256}
-  - component: {fileID: -7394517252550321126}
   - component: {fileID: 2354051835278938235}
   m_Layer: 9
   m_Name: Player1
@@ -342,6 +342,48 @@ MonoBehaviour:
   BlockingWeaponStates: 
   ShakeParameters: {x: 1.5, y: 0.5, z: 1}
   DiveAcceleration: 2
+--- !u!114 &-2398090789411659119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501480663414557552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32923dea13f3c24e8d24144ac3d6cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentHealth: 0
+  TemporarilyInvulnerable: 0
+  PostDamageInvulnerable: 0
+  InitialHealth: 500
+  MaximumHealth: 500
+  Invulnerable: 0
+  ImmuneToDamage: 0
+  DamageFeedbacks: {fileID: 0}
+  FeedbackIsProportionalToDamage: 0
+  FlickerSpriteOnHit: 0
+  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
+  ImmuneToKnockback: 0
+  ImmuneToKnockbackIfZeroDamage: 0
+  DeathFeedbacks: {fileID: 0}
+  DestroyOnDeath: 1
+  DelayBeforeDestruction: 0
+  CollisionsOffOnDeath: 1
+  GravityOffOnDeath: 0
+  PointsWhenDestroyed: 0
+  RespawnAtInitialLocation: 0
+  ApplyDeathForce: 1
+  DeathForce: {x: 0, y: 10}
+  ResetForcesOnDeath: 0
+  ResetColorOnRevive: 1
+  ColorMaterialPropertyName: _Color
+  UseMaterialPropertyBlocks: 0
+  MasterHealth: {fileID: 0}
+  OnlyDamageMaster: 1
+  KillOnMasterHealthDeath: 0
+  TargetDamageResistanceProcessor: {fileID: 0}
 --- !u!114 &2863816354752698861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -575,8 +617,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  InitialWeapon: {fileID: 114000010616902070, guid: a8144f8788a8ed04fb7eed8afc31f0d1,
-    type: 3}
+  InitialWeapon: {fileID: 0}
   CanPickupWeapons: 1
   WeaponAttachment: {fileID: 0}
   ForceWeaponScaleResetOnEquip: 0
@@ -726,48 +767,6 @@ MonoBehaviour:
   AirJumpFeedbacks: {fileID: 0}
   DoubleJumpFeedbacks: {fileID: 0}
   NumberOfJumpsLeft: 0
---- !u!114 &-7394517252550321126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501480663414557552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9716d97790a0a49889284ee813194576, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentHealth: 0
-  TemporarilyInvulnerable: 0
-  PostDamageInvulnerable: 0
-  InitialHealth: 80
-  MaximumHealth: 80
-  Invulnerable: 0
-  ImmuneToDamage: 0
-  DamageFeedbacks: {fileID: 0}
-  FeedbackIsProportionalToDamage: 0
-  FlickerSpriteOnHit: 1
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
-  ImmuneToKnockback: 1
-  ImmuneToKnockbackIfZeroDamage: 0
-  DeathFeedbacks: {fileID: 0}
-  DestroyOnDeath: 1
-  DelayBeforeDestruction: 0
-  CollisionsOffOnDeath: 1
-  GravityOffOnDeath: 0
-  PointsWhenDestroyed: 0
-  RespawnAtInitialLocation: 0
-  ApplyDeathForce: 1
-  DeathForce: {x: 0, y: 10}
-  ResetForcesOnDeath: 0
-  ResetColorOnRevive: 1
-  ColorMaterialPropertyName: _Color
-  UseMaterialPropertyBlocks: 0
-  MasterHealth: {fileID: 0}
-  OnlyDamageMaster: 1
-  KillOnMasterHealthDeath: 0
-  TargetDamageResistanceProcessor: {fileID: 0}
 --- !u!95 &2354051835278938235
 Animator:
   serializedVersion: 5
