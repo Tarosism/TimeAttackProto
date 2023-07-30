@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.CorgiEngine;
 using UnityEngine.SceneManagement;
-
+using MoreMountains.Tools;
 [System.Serializable]
 public class WeaponData
 {
@@ -25,6 +25,7 @@ public class SkillManager : MonoBehaviour
 
     public Button skillButton1;
     public Button skillButton2;
+
 
     // Start 메서드 이전에 실행됩니다.
     void Awake()
@@ -88,6 +89,8 @@ public class SkillManager : MonoBehaviour
     // 다음 스킬 세트로 넘어가는 메서드
     public void AdvanceToNextSkillSet()
     {
+        string _saveFolderName = "InventoryEngine/";
+
         int nextSkillSetIndex = skillSets.IndexOf(currentSkills) + 1;
         if (nextSkillSetIndex < skillSets.Count)
         {
@@ -109,6 +112,8 @@ public class SkillManager : MonoBehaviour
 
         DestroySingletons();
         SceneManager.LoadScene(0);
+        MMSaveLoadManager.DeleteSaveFolder(_saveFolderName);
+
     }
 
 

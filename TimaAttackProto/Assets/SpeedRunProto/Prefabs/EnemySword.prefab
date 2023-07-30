@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013472678096}
   - component: {fileID: 114000010616902070}
-  - component: {fileID: -1840259116002431811}
-  - component: {fileID: 6789027031366462405}
+  - component: {fileID: -1076171593580416847}
   m_Layer: 0
-  m_Name: BusySword
+  m_Name: EnemySword
   m_TagString: Untagged
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -44,7 +43,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000010407495960}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a557e2b93323f4831a62221b200348c4, type: 3}
   m_Name: 
@@ -52,7 +51,7 @@ MonoBehaviour:
   TriggerMode: 1
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 1
-  TimeBetweenUses: 1
+  TimeBetweenUses: 3
   TimeBetweenUsesReleaseInterruption: 1
   Interruptable: 0
   InitializeOnStart: 0
@@ -85,7 +84,7 @@ MonoBehaviour:
   MirrorCharacterAnimatorParameters: 0
   EquippedAnimationParameter: 
   IdleAnimationParameter: 
-  StartAnimationParameter: MeleeStart
+  StartAnimationParameter: 
   DelayBeforeUseAnimationParameter: 
   SingleUseAnimationParameter: 
   UseAnimationParameter: 
@@ -160,30 +159,30 @@ MonoBehaviour:
   ActiveDuration: 0.3
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8960
+    m_Bits: 512
   ApplyDamageOnTriggerEnter: 1
   ApplyDamageOnTriggerStay: 1
-  MinDamageCaused: 10
+  MinDamageCaused: 0
   MaxDamageCaused: 0
   Knockback: 0
   KnockbackForce: {x: 10, y: 2}
   InvincibilityDuration: 0.5
---- !u!114 &-1840259116002431811
+--- !u!114 &-1076171593580416847
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000010407495960}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53db1ded1f5362b4195f46f67dce9156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerMode: 1
-  DelayBeforeUse: 1
-  DelayBeforeUseReleaseInterruption: 1
-  TimeBetweenUses: 1
+  DelayBeforeUse: 0
+  DelayBeforeUseReleaseInterruption: 0
+  TimeBetweenUses: 0.1
   TimeBetweenUsesReleaseInterruption: 1
   Interruptable: 0
   InitializeOnStart: 0
@@ -198,7 +197,7 @@ MonoBehaviour:
   AutoDestroyWhenEmpty: 0
   AutoDestroyWhenEmptyDelay: 1
   CurrentAmmoLoaded: 0
-  WeaponAttachmentOffset: {x: 0, y: 0, z: 0}
+  WeaponAttachmentOffset: {x: 1, y: 0, z: 0}
   FlipWeaponOnCharacterFlip: 1
   FlipValue: {x: -1, y: 1, z: 1}
   LeftHandHandle: {fileID: 0}
@@ -284,8 +283,8 @@ MonoBehaviour:
     RecoilFeedback: {fileID: 0}
   MeleeDamageAreaMode: 0
   DamageAreaShape: 0
-  AreaOffset: {x: 1, y: 0}
-  AreaSize: {x: 1, y: 1}
+  AreaOffset: {x: 0.8, y: 0}
+  AreaSize: {x: 0.7, y: 0.7}
   ExistingDamageArea: {fileID: 0}
   InitialDelay: 0
   ActiveDuration: 1
@@ -294,64 +293,12 @@ MonoBehaviour:
     m_Bits: 8192
   ApplyDamageOnTriggerEnter: 1
   ApplyDamageOnTriggerStay: 1
-  MinDamageCaused: 1
+  MinDamageCaused: 5
   MaxDamageCaused: 0
   Knockback: 0
   KnockbackForce: {x: 10, y: 2}
   InvincibilityDuration: 0.5
   attackRange: 1
---- !u!212 &6789027031366462405
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010407495960}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300018, guid: f3f4293ccdddd34468f58745d608416e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1.28, y: 1.28}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &12680054434242481
 GameObject:
   m_ObjectHideFlags: 0

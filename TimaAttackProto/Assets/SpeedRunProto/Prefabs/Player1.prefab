@@ -27,8 +27,8 @@ GameObject:
   - component: {fileID: 7807421338118099370}
   - component: {fileID: 9127965451151521308}
   - component: {fileID: 2114328726866857991}
-  - component: {fileID: 5266928348958027781}
   - component: {fileID: 7119624693545233453}
+  - component: {fileID: 5266928348958027781}
   - component: {fileID: -2898158724942247049}
   - component: {fileID: 5345347505115744405}
   - component: {fileID: 263403022790858256}
@@ -363,8 +363,8 @@ MonoBehaviour:
   ImmuneToDamage: 0
   DamageFeedbacks: {fileID: 0}
   FeedbackIsProportionalToDamage: 0
-  FlickerSpriteOnHit: 0
-  FlickerColor: {r: 1, g: 0.078431375, b: 0.078431375, a: 1}
+  FlickerSpriteOnHit: 1
+  FlickerColor: {r: 1, g: 0.67358494, b: 0.67358494, a: 1}
   ImmuneToKnockback: 0
   ImmuneToKnockbackIfZeroDamage: 0
   DeathFeedbacks: {fileID: 0}
@@ -599,41 +599,6 @@ MonoBehaviour:
   BlockingWeaponStates: 
   PreventJumpWhenInZone: 1
   ActivationCooldownDuration: 0
---- !u!114 &5266928348958027781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3501480663414557552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a07c6668aa55403790d27b575279549, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AbilityStartFeedbacks: {fileID: 0}
-  AbilityStopFeedbacks: {fileID: 0}
-  AbilityPermitted: 1
-  BlockingMovementStates: 
-  BlockingConditionStates: 
-  BlockingWeaponStates: 
-  InitialWeapon: {fileID: 0}
-  CanPickupWeapons: 1
-  WeaponAttachment: {fileID: 0}
-  ForceWeaponScaleResetOnEquip: 0
-  ForceWeaponRotationResetOnEquip: 0
-  AutomaticallyBindAnimator: 1
-  AmmoDisplayID: 0
-  ContinuousPress: 0
-  GettingHitInterruptsAttack: 0
-  CanShootFromLadders: 0
-  FaceWeaponDirection: 0
-  InvertHorizontalAimWhenWallclinging: 0
-  ForceAlwaysShoot: 0
-  BufferInput: 0
-  NewInputExtendsBuffer: 0
-  MaximumBufferDuration: 0.25
-  CurrentWeapon: {fileID: 0}
 --- !u!114 &7119624693545233453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +628,41 @@ MonoBehaviour:
   AutoAddItemsMainInventory: []
   AutoAddItemsHotbar: []
   AutoEquipWeapon: {fileID: 0}
+--- !u!114 &5266928348958027781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501480663414557552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb2d1af5d893134ba245e201e36f176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  BlockingWeaponStates: 
+  InitialWeapon: {fileID: 0}
+  CanPickupWeapons: 1
+  WeaponAttachment: {fileID: 0}
+  ForceWeaponScaleResetOnEquip: 0
+  ForceWeaponRotationResetOnEquip: 0
+  AutomaticallyBindAnimator: 1
+  AmmoDisplayID: 0
+  ContinuousPress: 0
+  GettingHitInterruptsAttack: 0
+  CanShootFromLadders: 0
+  FaceWeaponDirection: 0
+  InvertHorizontalAimWhenWallclinging: 0
+  ForceAlwaysShoot: 0
+  BufferInput: 0
+  NewInputExtendsBuffer: 0
+  MaximumBufferDuration: 0.25
+  CurrentWeapon: {fileID: 0}
 --- !u!212 &-2898158724942247049
 SpriteRenderer:
   m_ObjectHideFlags: 0

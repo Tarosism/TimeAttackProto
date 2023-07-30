@@ -76,7 +76,7 @@ public class YesDebug : Skill
         GameObject easySword = Resources.Load<GameObject>("EasySwordPicker");
 
         // Instantiate the prefab
-        GameObject currentSword = UnityEngine.Object.Instantiate(easySword, Vector3.zero, Quaternion.identity);
+        GameObject currentSword = UnityEngine.Object.Instantiate(easySword, new Vector3(47, -7, 0), Quaternion.identity);
     }
 
 
