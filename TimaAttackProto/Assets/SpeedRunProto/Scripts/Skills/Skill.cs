@@ -48,7 +48,7 @@ public abstract class Skill
         {
             this.IsUnlocked = loadedSkill.IsUnlocked;
             this.Apply();
-            Debug.Log("Skill " + this.Name + " is loaded. Unlocked status: " + this.IsUnlocked);
+            //Debug.Log("Skill " + this.Name + " is loaded. Unlocked status: " + this.IsUnlocked);
         }
     }
 
@@ -70,8 +70,6 @@ public class YesDebug : Skill
 
     void EasySwordUp()
     {
-        Debug.Log("Here is EasySword");
-
         // Load the prefab from the Resources folder
         GameObject easySword = Resources.Load<GameObject>("EasySwordPicker");
 
@@ -95,7 +93,7 @@ public class NoDebug : Skill
 
     void NoLog()
     {
-        Debug.Log("no");
+        //Debug.Log("no");
     }
 
 
@@ -110,7 +108,7 @@ public class YeeDebug : Skill
 
     void YeeLog()
     {
-        Debug.Log("yee");
+        //Debug.Log("yee");
     }
 }
 
@@ -123,7 +121,7 @@ public class YoyoDebug : Skill
 
     void YoyoLog()
     {
-        Debug.Log("yoyo");
+        //Debug.Log("yoyo");
     }
 }
 

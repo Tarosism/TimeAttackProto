@@ -8,7 +8,7 @@ namespace MoreMountains.CorgiEngine
     public class PlayerShootAuto : MeleeWeapon
     {
 
-        public float attackRange = 1f; // 공격 범위
+        public float attackRange; // 공격 범위
         private bool canAttack = true; // 공격 가능 상태를 나타내는 변수
 
 

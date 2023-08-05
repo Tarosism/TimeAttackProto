@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TriggerMode: 1
   DelayBeforeUse: 0
-  DelayBeforeUseReleaseInterruption: 1
+  DelayBeforeUseReleaseInterruption: 0
   TimeBetweenUses: 3
   TimeBetweenUsesReleaseInterruption: 1
   Interruptable: 0
@@ -86,7 +86,7 @@ MonoBehaviour:
   IdleAnimationParameter: 
   StartAnimationParameter: 
   DelayBeforeUseAnimationParameter: 
-  SingleUseAnimationParameter: 
+  SingleUseAnimationParameter: Sword1
   UseAnimationParameter: 
   DelayBetweenUsesAnimationParameter: 
   StopAnimationParameter: 
@@ -155,17 +155,17 @@ MonoBehaviour:
   AreaOffset: {x: 1, y: 0}
   AreaSize: {x: 1, y: 1}
   ExistingDamageArea: {fileID: 0}
-  InitialDelay: 0
-  ActiveDuration: 0.3
+  InitialDelay: 0.3
+  ActiveDuration: 0
   TargetLayerMask:
     serializedVersion: 2
     m_Bits: 512
   ApplyDamageOnTriggerEnter: 1
-  ApplyDamageOnTriggerStay: 1
+  ApplyDamageOnTriggerStay: 0
   MinDamageCaused: 0
   MaxDamageCaused: 0
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2}
+  Knockback: 1
+  KnockbackForce: {x: 50, y: 1}
   InvincibilityDuration: 0.5
 --- !u!114 &-1076171593580416847
 MonoBehaviour:
