@@ -6,7 +6,7 @@ namespace MoreMountains.CorgiEngine
     public class FinishLevel_BossDefeat : Health
     {
         public string LevelName;
-        public string BossName;
+        public int BossName;
 
         public GameObject gatePrefab;
         public GameObject currentGate;
@@ -18,7 +18,7 @@ namespace MoreMountains.CorgiEngine
             base.Kill();
             SpeedRunTimer.Instance.OnEventFinished(BossName);
 
-            if (BossName != "LastBoss")
+            if (BossName != 1)
             {
                 OpenNextGate();
             }

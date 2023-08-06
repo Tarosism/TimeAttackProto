@@ -3660,7 +3660,7 @@ PrefabInstance:
     - target: {fileID: -2401087148328807894, guid: ae236cc13c3110c4a89a9a1e9a7cb600,
         type: 3}
       propertyPath: BossName
-      value: LastBoss
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2401087148328807894, guid: ae236cc13c3110c4a89a9a1e9a7cb600,
         type: 3}

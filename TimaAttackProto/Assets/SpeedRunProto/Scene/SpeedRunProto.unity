@@ -10227,7 +10227,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 256, y: -27.999985}
+  m_AnchoredPosition: {x: 256, y: -28}
   m_SizeDelta: {x: -522, y: -50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &968173461
@@ -15694,6 +15694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c68b0fb227f3594bac0bba2cfae96cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialEventNames:
+  - Small corgie
+  - Last corgie
   events: []
   realTimeText: {fileID: 1506018758}
   eventTimeTexts:
@@ -21553,7 +21556,7 @@ PrefabInstance:
     - target: {fileID: -2401087148328807894, guid: ae236cc13c3110c4a89a9a1e9a7cb600,
         type: 3}
       propertyPath: BossName
-      value: Son Corgie
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2562530083021133606, guid: ae236cc13c3110c4a89a9a1e9a7cb600,
         type: 3}

@@ -8,12 +8,11 @@ using MoreMountains.Tools;
 public class Event
 {
     public string eventName;
-    public float endTime;
+    public float endTime = float.MaxValue; // 최대값으로 초기화
 
-    public Event(string _eventName, float _endTime)
+    public Event(string _eventName)
     {
         eventName = _eventName;
-        endTime = _endTime;
     }
 }
 public class SpeedRunTimer : MonoBehaviour
@@ -25,6 +24,7 @@ public class SpeedRunTimer : MonoBehaviour
     private float startTime;
 
     // 특정 이벤트 완료까지 걸린 시간 리스트
+    public List<string> initialEventNames = new List<string>(); // 각 보스 이름을 여기에 미리 채워 넣으세요
     public List<Event> events = new List<Event>();
 
     // 특정 이벤트 완료 플래그
@@ -61,26 +61,47 @@ public class SpeedRunTimer : MonoBehaviour
     // 시작 시간 초기화
     void Start()
     {
-        events.Clear();
+        foreach (var eventName in initialEventNames)
+        {
+            events.Add(new Event(eventName));
+        }
+
         realTimeText.text = $"{startTime:F2}";
-        DisplayBestRecord();
+        DisplayLastRecord();
         startTime = 0f;
         sessionStartTime = Time.time;
     }
 
     // 이벤트가 끝났을 때 호출
-    public void OnEventFinished(string BossName)
+    public void OnEventFinished(int eventIndex)
     {
         float eventEndTime = Time.time - sessionStartTime;
-        events.Insert(0, new Event(BossName, eventEndTime));
-        isEventFinished = true;
-        if (events.Count > 10)
+        Event newEvent = events[eventIndex];
+        newEvent.endTime = eventEndTime;
+
+        Event previousEvent = events.Find(e => e.eventName == newEvent.eventName);
+
+        if (previousEvent != null)
         {
-            events.RemoveAt(10);
+            if (previousEvent.endTime != Mathf.Infinity)
+            {
+                Debug.Log($"{previousEvent.eventName}의 기록은 {previousEvent.endTime:F2}, 차이는 {previousEvent.endTime - newEvent.endTime:F2}");
+            }
+            else
+            {
+                Debug.Log($"{previousEvent.eventName}의 기록은 없음");
+            }
+        }
+        else
+        {
+            Debug.Log($"{newEvent.eventName}의 기록은 처음입니다.");
         }
 
+        isEventFinished = true;
         CheckBestRecord();
     }
+
+
 
     // 특정 이벤트 완료 시간 출력
     void Update()
@@ -103,39 +124,20 @@ public class SpeedRunTimer : MonoBehaviour
 
     void CheckBestRecord()
     {
-        //*이전에 기록된 리스트의 endTime과 비교해, 현재 List에 추가된 기록이 더 빠르면 해당 기록을 bestRecord로 만든다
-        var savedEvents = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
-
-        if (savedEvents == null || savedEvents.Count == 0)
-        {
-            // 이전 기록이 없으면 현재 이벤트가 최고 기록이 됨
-            MMSaveLoadManager.Save(events, BestRecordKey, "Record/");
-        }
-        else
-        {
-            // 현재 이벤트와 이전 기록을 비교
-            for (int i = 0; i < events.Count; i++)
-            {
-                if (i >= savedEvents.Count || events[i].endTime < savedEvents[i].endTime)
-                {
-                    // 현재 이벤트가 이전 기록보다 빠르면 최고 기록을 업데이트
-                    MMSaveLoadManager.Save(events, BestRecordKey, "Record/");
-                    break;
-                }
-            }
-        }
+        MMSaveLoadManager.Save(events, BestRecordKey, "Record/");
     }
 
-    void DisplayBestRecord()
+    void DisplayLastRecord()
     {
-        //*CheckBestRecord에 의해 BestRecord가 된 기록 List를 게임이 시작하면 불러온다
-        var bestRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
-        if (bestRecords != null)
+        // 게임 시작시, 이전 게임의 기록을 불러옴
+        var lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
+        if (lastRecords != null)
         {
-            // 이전의 최고 기록을 출력
-            for (int i = 0; i < Mathf.Min(4, bestRecords.Count); i++)
+            // 이전 게임의 기록을 출력
+            for (int i = 0; i < Mathf.Min(4, lastRecords.Count); i++)
             {
-                Debug.Log($"{bestRecords[i].eventName}의 최고기록은 {bestRecords[i].endTime:F2}");
+                float timeDifference = lastRecords[i].endTime - events[i].endTime; // 시간 차이 계산
+                Debug.Log($"{lastRecords[i].eventName}의 기록은 {lastRecords[i].endTime:F2}, 차이는 {timeDifference:F2}");
             }
         }
     }
