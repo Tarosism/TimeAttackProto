@@ -25,12 +25,13 @@ public class SpeedRunTimer : MonoBehaviour
 
     // 특정 이벤트 완료까지 걸린 시간 리스트
     public List<string> initialEventNames = new List<string>(); // 각 보스 이름을 여기에 미리 채워 넣으세요
-    public List<Event> events = new List<Event>();
+    public static List<Event> events = new List<Event>();
 
     // 특정 이벤트 완료 플래그
     private bool isEventFinished;
 
     public TextMeshProUGUI realTimeText;
+    public TextMeshProUGUI[] eventNameTexts = new TextMeshProUGUI[4];
     public TextMeshProUGUI[] eventTimeTexts = new TextMeshProUGUI[4];
 
     // 타이머 활성화 플래그
@@ -39,6 +40,8 @@ public class SpeedRunTimer : MonoBehaviour
     private const string BestRecordKey = "BestRecord";
     //시간을 초기화하기 위한
     private float sessionStartTime;
+    //메모리 절약을 위해 이전 기록을 start에서 먼저 불러옴
+    public static List<Event> lastRecords = null;
 
     // 싱글톤 인스턴스 설정
     void Awake()
@@ -66,8 +69,17 @@ public class SpeedRunTimer : MonoBehaviour
             events.Add(new Event(eventName));
         }
 
+        for (int i = 0; i < Mathf.Min(4, initialEventNames.Count); i++)
+        {
+            eventNameTexts[i].text = $"{initialEventNames[i]}";
+        }
+
         realTimeText.text = $"{startTime:F2}";
-        DisplayLastRecord();
+
+        // Load the last records at the start of the game
+        lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
+
+        //DisplayLastRecord();
         startTime = 0f;
         sessionStartTime = Time.time;
     }
@@ -79,29 +91,21 @@ public class SpeedRunTimer : MonoBehaviour
         Event newEvent = events[eventIndex];
         newEvent.endTime = eventEndTime;
 
-        Event previousEvent = events.Find(e => e.eventName == newEvent.eventName);
+        eventTimeTexts[eventIndex].text = $"{newEvent.endTime:F2}";
 
-        if (previousEvent != null)
+
+        // Use the loaded lastRecords
+        if (lastRecords != null)
         {
-            if (previousEvent.endTime != Mathf.Infinity)
-            {
-                Debug.Log($"{previousEvent.eventName}의 기록은 {previousEvent.endTime:F2}, 차이는 {previousEvent.endTime - newEvent.endTime:F2}");
-            }
-            else
-            {
-                Debug.Log($"{previousEvent.eventName}의 기록은 없음");
-            }
-        }
-        else
-        {
-            Debug.Log($"{newEvent.eventName}의 기록은 처음입니다.");
+            Event previousEvent = lastRecords.Find(e => e.eventName == newEvent.eventName);
+            Debug.Log($"이전 이벤트 = {previousEvent.eventName} , {previousEvent.endTime:F2}");
+            Debug.Log($"이것은 {newEvent.endTime - previousEvent.endTime:F2}의 차이다");
+            Debug.Log($"새 이벤트 = {newEvent.eventName} , {newEvent.endTime:F2}");
         }
 
         isEventFinished = true;
         CheckBestRecord();
     }
-
-
 
     // 특정 이벤트 완료 시간 출력
     void Update()
@@ -110,15 +114,6 @@ public class SpeedRunTimer : MonoBehaviour
         {
             startTime += Time.deltaTime;
             realTimeText.text = $"{startTime:F2}";
-        }
-
-        if (isEventFinished)
-        {
-            for (int i = 0; i < Mathf.Min(4, events.Count); i++)
-            {
-                eventTimeTexts[i].text = $"{events[i].eventName} {events[i].endTime:F2}";
-            }
-            isEventFinished = false;
         }
     }
 
@@ -130,15 +125,7 @@ public class SpeedRunTimer : MonoBehaviour
     void DisplayLastRecord()
     {
         // 게임 시작시, 이전 게임의 기록을 불러옴
-        var lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
-        if (lastRecords != null)
-        {
-            // 이전 게임의 기록을 출력
-            for (int i = 0; i < Mathf.Min(4, lastRecords.Count); i++)
-            {
-                float timeDifference = lastRecords[i].endTime - events[i].endTime; // 시간 차이 계산
-                Debug.Log($"{lastRecords[i].eventName}의 기록은 {lastRecords[i].endTime:F2}, 차이는 {timeDifference:F2}");
-            }
-        }
+        //var lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
+
     }
 }

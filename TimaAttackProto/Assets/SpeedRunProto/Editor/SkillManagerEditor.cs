@@ -2,6 +2,8 @@
 using UnityEditor;
 using UnityEngine;  // Add this line
 using System.Collections.Generic; // Add this line
+using MoreMountains.Tools; // Add this line
+
 #endif
 
 #if UNITY_EDITOR
@@ -15,6 +17,10 @@ public class SkillManagerEditor : Editor
         SkillManager skillManager = (SkillManager)target;
         if (GUILayout.Button("Delete All Skills"))
         {
+            if (!EditorApplication.isPlaying)
+            {
+                MMSaveLoadManager.DeleteSaveFolder("MyFolder/");
+            }
             // Check if 'skillSets' has been initialized
             if (skillManager.skillSets != null)
             {

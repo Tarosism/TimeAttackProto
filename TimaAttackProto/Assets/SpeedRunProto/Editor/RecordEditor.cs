@@ -17,11 +17,20 @@ public class RecordEditor : Editor
         SpeedRunTimer SpeedRunTimer = (SpeedRunTimer)target;
         if (GUILayout.Button("Delete All Records"))
         {
-            // Delete all the records saved with MMSaveLoadManager
-            MMSaveLoadManager.DeleteSaveFolder("Record/");
+            // Only perform deletion when not in Play Mode
+            if (!EditorApplication.isPlaying)
+            {
+                // Delete all the records saved with MMSaveLoadManager
+                MMSaveLoadManager.DeleteSaveFolder("Record/");
 
-            // Optional: Clear the in-memory event list
-            SpeedRunTimer.events.Clear();
+                // Optional: Clear the in-memory event list
+                SpeedRunTimer.events.Clear();
+                Debug.Log("Records Deleted");
+            }
+            else
+            {
+                Debug.LogError("This action can only be performed outside of Play Mode.");
+            }
         }
     }
 }

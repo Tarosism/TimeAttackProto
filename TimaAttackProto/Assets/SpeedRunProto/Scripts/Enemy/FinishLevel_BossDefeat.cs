@@ -25,7 +25,6 @@ namespace MoreMountains.CorgiEngine
             else
             {
                 SpeedRunTimer.Instance.isTimerActive = false;
-                SpeedRunTimer.Instance.OnEventFinished(BossName);
                 SkillManager.Instance.InitializeSkillButtons();
             }
         }
