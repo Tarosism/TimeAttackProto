@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 7807421338118099370}
   - component: {fileID: 9127965451151521308}
   - component: {fileID: 2114328726866857991}
-  - component: {fileID: 7119624693545233453}
+  - component: {fileID: -7061504326963864879}
   - component: {fileID: 5266928348958027781}
   - component: {fileID: -2898158724942247049}
   - component: {fileID: 5345347505115744405}
@@ -599,7 +599,7 @@ MonoBehaviour:
   BlockingWeaponStates: 
   PreventJumpWhenInZone: 1
   ActivationCooldownDuration: 0
---- !u!114 &7119624693545233453
+--- !u!114 &-7061504326963864879
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -608,7 +608,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3501480663414557552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a99d20994733989408d3700750a41df2, type: 3}
+  m_Script: {fileID: 11500000, guid: 664a8600b2312c245ace131a29823dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityStartFeedbacks: {fileID: 0}
@@ -628,6 +628,7 @@ MonoBehaviour:
   AutoAddItemsMainInventory: []
   AutoAddItemsHotbar: []
   AutoEquipWeapon: {fileID: 0}
+  SecondaryWeaponInventoryName: SecondaryWeaponInventory
 --- !u!114 &5266928348958027781
 MonoBehaviour:
   m_ObjectHideFlags: 0

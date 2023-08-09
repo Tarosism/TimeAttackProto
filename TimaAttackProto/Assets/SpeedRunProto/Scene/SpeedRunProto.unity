@@ -11492,7 +11492,7 @@ GameObject:
   - component: {fileID: 1274388991}
   - component: {fileID: 1274388992}
   m_Layer: 0
-  m_Name: SecondaryWeapon Inventory
+  m_Name: SecondaryWeaponInventory
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
