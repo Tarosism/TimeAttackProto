@@ -19,6 +19,7 @@ public class SkillManagerEditor : Editor
         {
             if (!EditorApplication.isPlaying)
             {
+                Debug.Log("Delete All Skills");
                 MMSaveLoadManager.DeleteSaveFolder("MyFolder/");
             }
             // Check if 'skillSets' has been initialized

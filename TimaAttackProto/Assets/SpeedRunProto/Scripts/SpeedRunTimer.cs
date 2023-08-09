@@ -33,6 +33,7 @@ public class SpeedRunTimer : MonoBehaviour
     public TextMeshProUGUI realTimeText;
     public TextMeshProUGUI[] eventNameTexts = new TextMeshProUGUI[4];
     public TextMeshProUGUI[] eventTimeTexts = new TextMeshProUGUI[4];
+    public TextMeshProUGUI[] eventP8Texts = new TextMeshProUGUI[4];
 
     // 타이머 활성화 플래그
     public bool isTimerActive = true;
@@ -74,11 +75,10 @@ public class SpeedRunTimer : MonoBehaviour
             eventNameTexts[i].text = $"{initialEventNames[i]}";
         }
 
-        realTimeText.text = $"{startTime:F2}";
+        realTimeText.text = $"{startTime:F1}";
 
         // Load the last records at the start of the game
-        lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
-
+        DisplayLastRecord();
         //DisplayLastRecord();
         startTime = 0f;
         sessionStartTime = Time.time;
@@ -89,18 +89,16 @@ public class SpeedRunTimer : MonoBehaviour
     {
         float eventEndTime = Time.time - sessionStartTime;
         Event newEvent = events[eventIndex];
-        newEvent.endTime = eventEndTime;
+        newEvent.endTime = eventEndTime - (eventEndTime - startTime);
 
-        eventTimeTexts[eventIndex].text = $"{newEvent.endTime:F2}";
+        eventTimeTexts[eventIndex].text = $"{newEvent.endTime:F1}";
 
 
         // Use the loaded lastRecords
         if (lastRecords != null)
         {
             Event previousEvent = lastRecords.Find(e => e.eventName == newEvent.eventName);
-            Debug.Log($"이전 이벤트 = {previousEvent.eventName} , {previousEvent.endTime:F2}");
-            Debug.Log($"이것은 {newEvent.endTime - previousEvent.endTime:F2}의 차이다");
-            Debug.Log($"새 이벤트 = {newEvent.eventName} , {newEvent.endTime:F2}");
+            eventP8Texts[eventIndex].text = $"{newEvent.endTime - previousEvent.endTime:F1}";
         }
 
         isEventFinished = true;
@@ -113,7 +111,7 @@ public class SpeedRunTimer : MonoBehaviour
         if (isTimerActive)
         {
             startTime += Time.deltaTime;
-            realTimeText.text = $"{startTime:F2}";
+            realTimeText.text = $"{startTime:F1}";
         }
     }
 
@@ -125,7 +123,13 @@ public class SpeedRunTimer : MonoBehaviour
     void DisplayLastRecord()
     {
         // 게임 시작시, 이전 게임의 기록을 불러옴
-        //var lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
-
+        lastRecords = MMSaveLoadManager.Load(typeof(List<Event>), BestRecordKey, "Record/") as List<Event>;
+        if (lastRecords != null)
+        {
+            for (int i = 0; i < lastRecords.Count && i < eventTimeTexts.Length; i++)
+            {
+                eventTimeTexts[i].text = $"{lastRecords[i].endTime:F1}";
+            }
+        }
     }
 }
