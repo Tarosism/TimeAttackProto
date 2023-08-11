@@ -810,6 +810,7 @@ namespace MoreMountains.InventoryEngine
                 }
                 MMInventoryEvent.Trigger(MMInventoryEventType.ItemEquipped, slot, this.name, item, item.Quantity, index, PlayerID);
             }
+            //얘는 단순히 main에 있는 걸 픽업해주는 느낌인 건가?
         }
 
         /// <summary>

@@ -39,6 +39,7 @@ namespace MoreMountains.CorgiEngine
         {
             // 여기에 오버라이드할 로직을 작성합니다.
             // 여기서 weaponID는 itemID 인지 확인해보기
+            Debug.Log(weaponID);
         }
 
 
