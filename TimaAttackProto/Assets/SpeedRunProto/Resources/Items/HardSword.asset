@@ -9,17 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d950f167cc755b943ac753e0fa223c59, type: 3}
-  m_Name: BombItem
+  m_Script: {fileID: 11500000, guid: 16f005fbcfc61684c82bf819bce9d63b, type: 3}
+  m_Name: HardSword
   m_EditorClassIdentifier: 
-  ItemID: 
+  ItemID: HardSword
   TargetInventoryName: MainInventory
   ForceSlotIndex: 0
   TargetIndex: 0
-  Usable: 1
+  Usable: 0
   Consumable: 1
   ConsumeQuantity: 1
-  Equippable: 0
+  Equippable: 1
   EquippableIfInventoryIsFull: 1
   MoveWhenEquipped: 1
   Droppable: 1
@@ -33,11 +33,11 @@ MonoBehaviour:
     DisplayUseButton: 1
     DisplayUnequipButton: 1
   Quantity: 1
-  ItemName: 
-  ShortDescription: 
-  Description: 
+  ItemName: HardSword
+  ShortDescription: So hard!
+  Description: Like your ex
   Icon: {fileID: 0}
-  Prefab: {fileID: 0}
+  Prefab: {fileID: 1472130053336478, guid: 84d899b3c1036b64591dbca226fdb17e, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
@@ -83,9 +83,13 @@ MonoBehaviour:
     MaximumScale: {x: 1, y: 1, z: 1}
   MaximumStack: 1
   ItemClass: 0
-  TargetEquipmentInventoryName: 
+  TargetEquipmentInventoryName: SecondaryWeaponInventory
   EquippedSound: {fileID: 0}
   UsedSound: {fileID: 0}
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
+  EquippableWeapon: {fileID: 114000010616902070, guid: 773801415490c1740acb9f503752f042,
+    type: 3}
+  AutoEquipMode: 0
+  HandleWeaponID: 1

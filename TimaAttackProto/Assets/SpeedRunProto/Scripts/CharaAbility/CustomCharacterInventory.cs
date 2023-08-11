@@ -35,6 +35,13 @@ namespace MoreMountains.CorgiEngine
             }
         }
 
+        protected override void EquipWeapon(string weaponID)
+        {
+            // 여기에 오버라이드할 로직을 작성합니다.
+            // 여기서 weaponID는 itemID 인지 확인해보기
+        }
+
+
         protected virtual void EquipSecondaryWeapon(string weaponID)
         {
             // Logic to equip a weapon into the secondary weapon inventory

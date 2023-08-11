@@ -10,6 +10,7 @@ namespace MoreMountains.CorgiEngine
     {
         protected CharacterInventory _weaponInventory;
         protected Weapon _storedWeapon;
+        public Weapon ConsumableWeapon;
         public override void Setup()
         {
             base.Setup(); // 부모 클래스의 Setup 호출

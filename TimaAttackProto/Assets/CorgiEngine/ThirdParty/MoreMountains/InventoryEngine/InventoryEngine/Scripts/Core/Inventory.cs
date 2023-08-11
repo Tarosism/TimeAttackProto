@@ -19,7 +19,7 @@ namespace MoreMountains.InventoryEngine
         public static List<Inventory> RegisteredInventories;
 
         /// The different possible inventory types, main are regular, equipment will have special behaviours (use them for slots where you put the equipped weapon/armor/etc).
-        public enum InventoryTypes { Main, Equipment }
+        public enum InventoryTypes { Main, Equipment, consumable }
 
         [Header("Player ID")]
         /// a unique ID used to identify the owner of this inventory

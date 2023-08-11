@@ -628,7 +628,7 @@ MonoBehaviour:
   AutoAddItemsMainInventory: []
   AutoAddItemsHotbar: []
   AutoEquipWeapon: {fileID: 0}
-  SecondaryWeaponInventoryName: SecondaryWeaponInventory
+  SecondaryWeaponInventoryName: ConsumableItemInventory
 --- !u!114 &5266928348958027781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +665,7 @@ MonoBehaviour:
   NewInputExtendsBuffer: 0
   MaximumBufferDuration: 0.25
   CurrentWeapon: {fileID: 0}
+  ConsumableWeapon: {fileID: 0}
 --- !u!212 &-2898158724942247049
 SpriteRenderer:
   m_ObjectHideFlags: 0
