@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d950f167cc755b943ac753e0fa223c59, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b3cf63464e60f34cb72a835638f2563, type: 3}
   m_Name: FireBomb
   m_EditorClassIdentifier: 
   ItemID: FireBomb
@@ -36,8 +36,8 @@ MonoBehaviour:
   ItemName: fire
   ShortDescription: fdmweo
   Description: 
-  Icon: {fileID: 21300008, guid: fa6d364a5a0575245859952062aea14b, type: 3}
-  Prefab: {fileID: 0}
+  Icon: {fileID: 21300004, guid: f3f4293ccdddd34468f58745d608416e, type: 3}
+  Prefab: {fileID: 1472130053336478, guid: 3c6eaf9e99b9bd74c931cecb733a61b3, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
@@ -81,7 +81,7 @@ MonoBehaviour:
     MaximumRotation: {x: 0, y: 0, z: 0}
     MinimumScale: {x: 1, y: 1, z: 1}
     MaximumScale: {x: 1, y: 1, z: 1}
-  MaximumStack: 1
+  MaximumStack: 99
   ItemClass: 3
   TargetEquipmentInventoryName: ConsumableItemInventory
   EquippedSound: {fileID: 0}
@@ -89,3 +89,4 @@ MonoBehaviour:
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
+  throwForce: 10

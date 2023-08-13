@@ -137,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d96dc71d76c4e2ab8eb19d92d40d5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Item: {fileID: 11400000, guid: e0e965d08655ba54fa5a92a609654e47, type: 2}
-  Quantity: 1
+  Item: {fileID: 11400000, guid: 7cc29330aa4efb04ca1bd2868df79d16, type: 2}
+  Quantity: 50
   RemainingQuantity: 1
   PickableIfInventoryIsFull: 0
   DisableObjectWhenDepleted: 1

@@ -84,7 +84,6 @@ public class YesDebug : Skill
 public class NoDebug : Skill
 {
 
-
     public NoDebug()
         : base("NoDebug")
     {
@@ -94,6 +93,11 @@ public class NoDebug : Skill
     void NoLog()
     {
         //Debug.Log("no");
+        int newLayer = LayerMask.NameToLayer("Enemies");
+        if (newLayer != -1)
+        {
+            SkillManager.Instance.changeEnemy.layer = newLayer;
+        }
     }
 
 

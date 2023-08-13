@@ -37,7 +37,7 @@ MonoBehaviour:
   ShortDescription: So hard!
   Description: Like your ex
   Icon: {fileID: 0}
-  Prefab: {fileID: 1472130053336478, guid: 84d899b3c1036b64591dbca226fdb17e, type: 3}
+  Prefab: {fileID: 1472130053336478, guid: dd5585837a50c9147862eb7be85d4bc5, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
   DropProperties:
@@ -83,7 +83,7 @@ MonoBehaviour:
     MaximumScale: {x: 1, y: 1, z: 1}
   MaximumStack: 1
   ItemClass: 0
-  TargetEquipmentInventoryName: SecondaryWeaponInventory
+  TargetEquipmentInventoryName: WeaponInventory
   EquippedSound: {fileID: 0}
   UsedSound: {fileID: 0}
   MovedSound: {fileID: 0}

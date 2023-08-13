@@ -25,6 +25,7 @@ public class SkillManager : MonoBehaviour
 
     public Button skillButton1;
     public Button skillButton2;
+    public GameObject changeEnemy;
 
 
     // Start 메서드 이전에 실행됩니다.
@@ -66,6 +67,8 @@ public class SkillManager : MonoBehaviour
                 skill.LoadState();
             }
         }
+        GameObject enemyInstance = Instantiate(changeEnemy, new Vector3(42, -1, 0), Quaternion.identity);
+
     }
 
     public void InitializeSkillButtons() //특정 행동이 일어난 후 스킬트리 초기화

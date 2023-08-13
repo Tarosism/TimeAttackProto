@@ -36,7 +36,7 @@ MonoBehaviour:
   ItemName: Bomber
   ShortDescription: Bomber
   Description: Bomber
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300002, guid: 079f5a8d00f74c84181be0a872b4c39d, type: 3}
   Prefab: {fileID: 1472130053336478, guid: 3c6eaf9e99b9bd74c931cecb733a61b3, type: 3}
   ForcePrefabDropQuantity: 0
   PrefabDropQuantity: 1
