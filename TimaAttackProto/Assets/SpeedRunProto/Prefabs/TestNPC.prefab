@@ -188,8 +188,6 @@ MonoBehaviour:
   Dialogue:
   - sex
   - haha
-  questManager: {fileID: 8645545505653984794, guid: 2b4d7de79c8b3b342bb786603af03e1c,
-    type: 3}
   questIndexToStart: 0
 --- !u!114 &397907332295207131
 MonoBehaviour:

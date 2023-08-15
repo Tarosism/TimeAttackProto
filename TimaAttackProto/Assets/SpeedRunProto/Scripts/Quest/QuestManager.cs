@@ -2,15 +2,31 @@ using UnityEngine;
 
 public class QuestManager : MonoBehaviour
 {
+    public static QuestManager Instance { get; private set; }
 
     public Quest[] quests;
-    public bool isQuest = false;
+    public bool isQuest;
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    void Start()
+    {
+        isQuest = false;
+        quests[0].IsCompleted = false;
+    }
 
     // 퀘스트를 시작합니다.
     public void StartQuest(int questIndex)
     {
-        quests[questIndex].StartQuest();
         isQuest = true;
+        quests[questIndex].StartQuest();
     }
 
     // 퀘스트의 특정 단계를 완료합니다.
@@ -31,10 +47,9 @@ public class Quest
     public string questName;
     public QuestStep[] steps;
     private int currentStep = 0;
-    public QuestManager questManager;
 
     // 퀘스트 완료 상태를 나타내는 변수
-    public bool IsCompleted { get; private set; } = false;
+    public bool IsCompleted { get; set; } = false;
 
     public void StartQuest()
     {
@@ -45,7 +60,7 @@ public class Quest
             return;
         }
         Debug.Log(questName + " has started!");
-        steps[currentStep].StartStep();
+        steps[0].StartStep();
     }
 
     public void CompleteStep(int stepIndex, bool isEnd)
@@ -65,6 +80,7 @@ public class Quest
             }
             else
             {
+                Debug.Log("quest complete!");
                 IsCompleted = true; // 퀘스트를 완료로 표시
             }
         }

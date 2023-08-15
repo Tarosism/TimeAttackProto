@@ -56,8 +56,6 @@ public abstract class Skill
     {
         MMSaveLoadManager.DeleteSave("Skill_" + this.Name, "MyFolder/");
     }
-
-
 }
 
 public class YesDebug : Skill
@@ -70,20 +68,18 @@ public class YesDebug : Skill
 
     void EasySwordUp()
     {
+        Debug.Log("EasySword");
         // Load the prefab from the Resources folder
         GameObject easySword = Resources.Load<GameObject>("EasySwordPicker");
 
         // Instantiate the prefab
         GameObject currentSword = UnityEngine.Object.Instantiate(easySword, new Vector3(47, -7, 0), Quaternion.identity);
     }
-
-
 }
 
 
 public class NoDebug : Skill
 {
-
     public NoDebug()
         : base("NoDebug")
     {
@@ -92,15 +88,13 @@ public class NoDebug : Skill
 
     void NoLog()
     {
-        //Debug.Log("no");
+        Debug.Log("Npc Attack");
         int newLayer = LayerMask.NameToLayer("Enemies");
         if (newLayer != -1)
         {
             SkillManager.Instance.changeEnemy.layer = newLayer;
         }
     }
-
-
 }
 
 public class YeeDebug : Skill

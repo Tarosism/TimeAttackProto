@@ -5,60 +5,68 @@ using UnityEngine.UI;
 using MoreMountains.CorgiEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
+using TMPro;
+
 [System.Serializable]
 public class WeaponData
 {
     public string WeaponName;
     public float AttackPower;
-    // 필요한 만큼 다른 속성을 추가할 수 있습니다.
 }
+
 public class SkillManager : MonoBehaviour
 {
-    public List<List<Skill>> skillSets; // 각 단계별 스킬 세트를 담을 수 있는 리스트
-
-    public SkillManager()
-    {
-        skillSets = new List<List<Skill>>();
-    }
-    public List<Skill> currentSkills; // 현재 단계에서 사용가능한 스킬 세트
+    public List<List<Skill>> skillSets;
+    public List<Skill> currentSkills;
     public static SkillManager Instance { get; private set; }
 
     public Button skillButton1;
     public Button skillButton2;
     public GameObject changeEnemy;
+    public QuestDestination questDestination;
 
+    public SkillManager()
+    {
+        skillSets = new List<List<Skill>>();
+    }
 
-    // Start 메서드 이전에 실행됩니다.
     void Awake()
     {
-        // 싱글톤 인스턴스가 이미 있다면 새로운 인스턴스를 파괴합니다.
+        InitializeSingleton();
+    }
+
+    void Start()
+    {
+        InitializeSkillSets();
+        InitializeEnemyLayer();
+    }
+
+    void InitializeSingleton()
+    {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-
-        // 아니라면 싱글톤 인스턴스를 이 객체로 설정합니다.
         Instance = this;
-
-        // 씬이 변경되어도 파괴되지 않도록 설정합니다.
         DontDestroyOnLoad(gameObject);
     }
 
-    void Start()
+    void InitializeSkillSets()
     {
         skillButton1.gameObject.SetActive(false);
         skillButton2.gameObject.SetActive(false);
+        TextMeshProUGUI skill1Text = skillButton1.GetComponentInChildren<TextMeshProUGUI>();
+        TextMeshProUGUI skill2Text = skillButton2.GetComponentInChildren<TextMeshProUGUI>();
 
         skillSets = new List<List<Skill>>
         {
             new List<Skill> { new YesDebug(), new NoDebug() },
             new List<Skill> { new YeeDebug(), new YoyoDebug() }
-            // 필요한만큼 더 추가할 수 있습니다.
         };
-        int loadedSkillSetIndex = PlayerPrefs.GetInt("CurrentSkillSetIndex", 0); // default value is 0
 
-        currentSkills = skillSets[loadedSkillSetIndex]; // 처음에는 첫 번째 스킬 세트로 시작
+        int loadedSkillSetIndex = PlayerPrefs.GetInt("CurrentSkillSetIndex", 0);
+        currentSkills = skillSets[loadedSkillSetIndex];
 
         foreach (List<Skill> skillList in skillSets)
         {
@@ -67,20 +75,19 @@ public class SkillManager : MonoBehaviour
                 skill.LoadState();
             }
         }
-        GameObject enemyInstance = Instantiate(changeEnemy, new Vector3(42, -1, 0), Quaternion.identity);
 
+        skill1Text.text = currentSkills[0].Name;
+        skill2Text.text = currentSkills[1].Name;
     }
 
-    public void InitializeSkillButtons() //특정 행동이 일어난 후 스킬트리 초기화
+    public void InitializeSkillButtons()
     {
         skillButton1.gameObject.SetActive(true);
         skillButton2.gameObject.SetActive(true);
 
-        // Remove previous listeners
         skillButton1.onClick.RemoveAllListeners();
         skillButton2.onClick.RemoveAllListeners();
 
-        // Assign new listeners
         string skillName1 = currentSkills[0].Name;
         string skillName2 = currentSkills[1].Name;
 
@@ -152,7 +159,32 @@ public class SkillManager : MonoBehaviour
     {
         Destroy(TimeTextParent.instance.gameObject);
         Destroy(SpeedRunTimer.Instance.gameObject);
+        Destroy(QuestManager.Instance.gameObject);
         Destroy(Instance.gameObject);
     }
+
+    void InitializeEnemyLayer()
+    {
+        GameObject enemyInstance = Instantiate(changeEnemy, new Vector3(42, -1, 0), Quaternion.identity);
+
+        // 모든 스킬 세트에서 NoDebug 스킬을 찾습니다.
+        Skill noDebugSkill = null;
+        foreach (var skillList in skillSets)
+        {
+            noDebugSkill = skillList.Find(skill => skill.Name == "NoDebug");
+            if (noDebugSkill != null) break;
+        }
+
+        // NoDebug 스킬의 잠금 해제 상태에 따라 레이어를 설정합니다.
+        if (noDebugSkill != null && !noDebugSkill.IsUnlocked)
+        {
+            enemyInstance.layer = LayerMask.NameToLayer("Default");
+        }
+        else
+        {
+            questDestination.questWall.SetActive(false); // questWall 비활성화
+        }
+    }
+
 }
 

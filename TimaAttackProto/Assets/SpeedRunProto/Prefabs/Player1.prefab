@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 1238651228863801794}
   - component: {fileID: 241354484236515948}
   - component: {fileID: 8965963922892713945}
+  - component: {fileID: 3060290867194384660}
   - component: {fileID: 7807421338118099370}
   - component: {fileID: 9127965451151521308}
   - component: {fileID: 2114328726866857991}
@@ -295,7 +296,7 @@ MonoBehaviour:
   ActiveAfterDeath: 0
   TouchTheGroundFeedback: {fileID: 0}
   MinimumAirTimeBeforeFeedback: 0.2
-  StopWalkingWhenCollidingWithAWall: 0
+  StopWalkingWhenCollidingWithAWall: 1
 --- !u!114 &5602905485635952728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +529,30 @@ MonoBehaviour:
   NumberOfWalljumpsLeft: 0
   AllowCoyoteTime: 0
   CoyoteTimeDuration: 0.2
+--- !u!114 &3060290867194384660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501480663414557552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f6acc45a765d864ba3d69b6c84471f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityStartFeedbacks: {fileID: 0}
+  AbilityStopFeedbacks: {fileID: 0}
+  AbilityPermitted: 1
+  BlockingMovementStates: 
+  BlockingConditionStates: 
+  BlockingWeaponStates: 
+  InWater: 0
+  SwimHeight: 3.025
+  SwimAnimationDuration: 0.8
+  WaterEntryEffect: {fileID: 0}
+  WaterExitEffect: {fileID: 0}
+  WaterExitForce: {x: 0, y: 12}
 --- !u!114 &7807421338118099370
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class QuestDestination : MonoBehaviour
 {
-    public QuestManager questManager;
     public int questIndex;
     public int stepIndex;
+    public string questName;
+    public GameObject questWall;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && questManager.isQuest)
+        if (other.CompareTag("Player") && QuestManager.Instance.isQuest)
         {
-            questManager.CompleteQuestStep(questIndex, stepIndex);
+            QuestManager.Instance.CompleteQuestStep(questIndex, stepIndex);
+            questWall.gameObject.SetActive(false);
         }
     }
 }
