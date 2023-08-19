@@ -51,7 +51,7 @@ GameObject:
   - 114: {fileID: 11461960}
   - 114: {fileID: 11402026}
   m_Layer: 5
-  m_Name: Basic Standard Usable UI
+  m_Name: Basic Standard Usable UI 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
