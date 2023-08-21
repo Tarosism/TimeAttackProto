@@ -6,6 +6,7 @@ using MoreMountains.CorgiEngine;
 using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
 using TMPro;
+using PixelCrushers.DialogueSystem;
 
 [System.Serializable]
 public class WeaponData
@@ -165,8 +166,6 @@ public class SkillManager : MonoBehaviour
 
     void InitializeEnemyLayer()
     {
-        GameObject enemyInstance = Instantiate(changeEnemy, new Vector3(42, -1, 0), Quaternion.identity);
-
         // 모든 스킬 세트에서 NoDebug 스킬을 찾습니다.
         Skill noDebugSkill = null;
         foreach (var skillList in skillSets)
@@ -178,11 +177,12 @@ public class SkillManager : MonoBehaviour
         // NoDebug 스킬의 잠금 해제 상태에 따라 레이어를 설정합니다.
         if (noDebugSkill != null && !noDebugSkill.IsUnlocked)
         {
-            enemyInstance.layer = LayerMask.NameToLayer("Default");
+            changeEnemy.layer = LayerMask.NameToLayer("Default");
         }
         else
         {
-            questDestination.questWall.SetActive(false); // questWall 비활성화
+            DialogueSystemTrigger isEnemy = changeEnemy.gameObject.GetComponent<DialogueSystemTrigger>();
+            isEnemy.enabled = false; // BoxCollider2D를 비활성화합니다.
         }
     }
 

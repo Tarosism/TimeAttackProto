@@ -28,7 +28,7 @@ public class SpeedRunTimer : MonoBehaviour
     public static List<Event> events = new List<Event>();
 
     // 특정 이벤트 완료 플래그
-    private bool isEventFinished;
+    //private bool isEventFinished;
 
     public TextMeshProUGUI realTimeText;
     public TextMeshProUGUI[] eventNameTexts = new TextMeshProUGUI[4];
@@ -101,7 +101,7 @@ public class SpeedRunTimer : MonoBehaviour
             eventP8Texts[eventIndex].text = $"{newEvent.endTime - previousEvent.endTime:F1}";
         }
 
-        isEventFinished = true;
+        //isEventFinished = true;
         CheckBestRecord();
     }
 
