@@ -101,12 +101,12 @@ public class YeeDebug : Skill
 {
     public YeeDebug() : base("YeeDebug")
     {
-        OnApply += YeeLog;
+        OnApply += GlitchWaterOn;
     }
 
-    void YeeLog()
+    void GlitchWaterOn()
     {
-        //Debug.Log("yee");
+
     }
 }
 

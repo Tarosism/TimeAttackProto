@@ -24,7 +24,6 @@ public class SkillManager : MonoBehaviour
     public Button skillButton1;
     public Button skillButton2;
     public GameObject changeEnemy;
-    public QuestDestination questDestination;
 
     public SkillManager()
     {
@@ -124,10 +123,7 @@ public class SkillManager : MonoBehaviour
         DestroySingletons();
         SceneManager.LoadScene(0);
         MMSaveLoadManager.DeleteSaveFolder(_saveFolderName);
-
     }
-
-
 
     // 현재 스킬 세트에서 스킬을 잠금 해제하는 메서드
     public void UnlockSkill(Button button, string skillName)
@@ -143,18 +139,6 @@ public class SkillManager : MonoBehaviour
             Debug.Log("스킬을 이미 얻으셨습니다!");
         }
     }
-
-    // // 현재 스킬 세트에서 스킬의 효과를 적용하는 메서드
-    // public void ApplySkill(string skillName)
-    // {
-    //     Skill skillToApply = currentSkills.Find(skill => skill.Name == skillName);
-    //     // skillToApply.Apply();
-
-    //     if (skillToApply != null && skillToApply.IsUnlocked)
-    //     {
-    //         skillToApply.Apply();
-    //     }
-    // }
 
     public static void DestroySingletons()
     {
