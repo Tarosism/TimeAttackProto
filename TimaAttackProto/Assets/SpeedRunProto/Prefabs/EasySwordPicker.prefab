@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 58712065003539054}
   - component: {fileID: 114090134978246500}
   - component: {fileID: 114166795042413076}
+  - component: {fileID: -6947080500660324642}
   m_Layer: 0
   m_Name: EasySwordPicker
   m_TagString: Untagged
@@ -145,6 +146,19 @@ MonoBehaviour:
   RequirePlayerTag: 1
   PickFeedbacks: {fileID: 0}
   ResetQuantityOnPlayerRespawn: 0
+--- !u!114 &-6947080500660324642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472130053336478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a36193fb034c9c4590c58d936cbf1c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryInputManager: {fileID: 0}
 --- !u!1 &6983013187715230947
 GameObject:
   m_ObjectHideFlags: 0

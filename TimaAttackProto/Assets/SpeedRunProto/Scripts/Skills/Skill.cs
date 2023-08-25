@@ -106,7 +106,7 @@ public class YeeDebug : Skill
 
     void GlitchWaterOn()
     {
-
+        SkillManager.Instance.swimGlitch.SetActive(true);
     }
 }
 

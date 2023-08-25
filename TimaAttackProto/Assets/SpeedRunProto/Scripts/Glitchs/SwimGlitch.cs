@@ -31,7 +31,7 @@ public class SwimGlitch : MonoBehaviour
     {
         if (playerTransform != null)
         {
-            playerTransform.position += new Vector3(0.01f, 0, 0); // 천천히 오른쪽으로 이동
+            playerTransform.position += new Vector3(0.3f, 0, 0); // 천천히 오른쪽으로 이동
 
             if (Time.time > nextFlipTime)
             {

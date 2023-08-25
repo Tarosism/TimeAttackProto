@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using MoreMountains.Tools;
 using TMPro;
 using PixelCrushers.DialogueSystem;
+using MoreMountains.InventoryEngine;
 
 [System.Serializable]
 public class WeaponData
@@ -24,6 +25,10 @@ public class SkillManager : MonoBehaviour
     public Button skillButton1;
     public Button skillButton2;
     public GameObject changeEnemy;
+    public GameObject swimGlitch;
+
+    public Inventory inventory { get; set; }
+    public InventoryInputManager inventoryInputManager { get; set; }
 
     public SkillManager()
     {
@@ -50,6 +55,9 @@ public class SkillManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        inventory = FindObjectOfType<Inventory>();
+        inventoryInputManager = FindObjectOfType<InventoryInputManager>();
     }
 
     void InitializeSkillSets()
@@ -144,7 +152,6 @@ public class SkillManager : MonoBehaviour
     {
         Destroy(TimeTextParent.instance.gameObject);
         Destroy(SpeedRunTimer.Instance.gameObject);
-        Destroy(QuestManager.Instance.gameObject);
         Destroy(Instance.gameObject);
     }
 
