@@ -44,6 +44,8 @@ public class SpeedRunTimer : MonoBehaviour
     //메모리 절약을 위해 이전 기록을 start에서 먼저 불러옴
     public static List<Event> lastRecords = null;
 
+    //bool isFirstFrame = true;
+    float startRealTime;
     // 싱글톤 인스턴스 설정
     void Awake()
     {
@@ -82,6 +84,7 @@ public class SpeedRunTimer : MonoBehaviour
         //DisplayLastRecord();
         startTime = 0f;
         sessionStartTime = Time.time;
+        startRealTime = Time.realtimeSinceStartup;
     }
 
     // 이벤트가 끝났을 때 호출
@@ -108,9 +111,16 @@ public class SpeedRunTimer : MonoBehaviour
     // 특정 이벤트 완료 시간 출력
     void Update()
     {
+        // if (isFirstFrame)
+        // {
+        //     isFirstFrame = false;
+        //     return;
+        // }
         if (isTimerActive)
         {
-            startTime += Time.deltaTime;
+            //startTime += Time.unscaledDeltaTime;
+            startTime = Time.realtimeSinceStartup - startRealTime;
+
             realTimeText.text = $"{startTime:F1}";
         }
     }

@@ -9,6 +9,8 @@ using TMPro;
 using PixelCrushers.DialogueSystem;
 using MoreMountains.InventoryEngine;
 
+using System.Linq;
+using System;
 [System.Serializable]
 public class WeaponData
 {
@@ -177,5 +179,21 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    //!현재 skillManager를 짬통으로 쓰는 중(gameManager 역할) 추후 정리필요
+    public void ScheduleInventoryClose(float delay, InventoryPickableItem picked)
+    {
+        StartCoroutine(CloseInventoryAfterRealTime(delay, picked));
+    }
+
+    IEnumerator CloseInventoryAfterRealTime(float delay, InventoryPickableItem picked)
+    {
+        inventoryInputManager.ToggleInventory();
+        InventoryItem findItem = inventory.Content.FirstOrDefault(item => item.ItemID == picked.Item.ItemID);
+        int idx = Array.FindIndex(inventory.Content, item => item.ItemID == picked.Item.ItemID);
+        inventory.EquipItem(findItem, idx, null);
+        yield return new WaitForSecondsRealtime(delay);
+        inventoryInputManager.ToggleInventory();
+    }
+    //!위 코루틴은 AutoEquipWeapon class 에서 온 새끼임;;
 }
 

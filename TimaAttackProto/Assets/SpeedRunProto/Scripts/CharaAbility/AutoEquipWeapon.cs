@@ -2,28 +2,18 @@ using UnityEngine;
 using MoreMountains.Tools;
 using MoreMountains.InventoryEngine;
 using MoreMountains.CorgiEngine;
-using System.Linq;
-using System;
-
 public class AutoEquipWeapon : MonoBehaviour
 {
-    InventoryInputManager inventoryInputManager;
-    Inventory inventory;
-
-    private void Start()
+    private bool shouldAutoEquip = true;
+    private void Awake()
     {
-        inventoryInputManager = SkillManager.Instance.inventoryInputManager;
-        inventory = SkillManager.Instance.inventory;
-
+        //scene로딩으로 들어갈 때는 인벤토리를 안 엽니다
+        MMSceneLoadingManager.OnLoadingStarted += () => shouldAutoEquip = false;
+        MMSceneLoadingManager.OnLoadingCompleted += () => shouldAutoEquip = true;
     }
-
     private void OnDisable()
     {
-        inventoryInputManager.OpenInventory();
-        InventoryPickableItem picked = gameObject.GetComponent<InventoryPickableItem>();
-        InventoryItem findItem = inventory.Content.FirstOrDefault(item => item.ItemID == picked.Item.ItemID);
-        int idx = Array.FindIndex(inventory.Content, item => item.ItemID == picked.Item.ItemID);
-        inventory.EquipItem(findItem, idx, null);
-        inventoryInputManager.CloseInventory();
+        if (!shouldAutoEquip) return;
+        SkillManager.Instance.ScheduleInventoryClose(0.1f, gameObject.GetComponent<InventoryPickableItem>());
     }
 }
