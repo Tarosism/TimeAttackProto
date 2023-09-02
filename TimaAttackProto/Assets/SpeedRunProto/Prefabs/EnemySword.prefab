@@ -165,7 +165,7 @@ MonoBehaviour:
   MinDamageCaused: 0
   MaxDamageCaused: 0
   Knockback: 1
-  KnockbackForce: {x: 50, y: 1}
+  KnockbackForce: {x: 2, y: 1}
   InvincibilityDuration: 0.5
 --- !u!114 &-1076171593580416847
 MonoBehaviour:

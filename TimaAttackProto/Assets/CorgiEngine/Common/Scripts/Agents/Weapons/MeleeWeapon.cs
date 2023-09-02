@@ -130,6 +130,9 @@ namespace MoreMountains.CorgiEngine
             _damageArea.transform.position = this.transform.position;
             _damageArea.transform.rotation = this.transform.rotation;
             _damageArea.transform.SetParent(this.transform);
+            //!레이어 설정 추가!//
+            _damageArea.layer = LayerMask.NameToLayer("Projectiles");
+            //!레이어 설정 추가!//
 
             if (DamageAreaShape == MeleeDamageAreaShapes.Rectangle)
             {
