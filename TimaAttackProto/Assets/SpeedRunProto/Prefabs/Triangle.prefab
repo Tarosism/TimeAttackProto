@@ -54,39 +54,18 @@ MonoBehaviour:
       - {fileID: 2357321109526804152}
     Transitions:
       array:
-      - Decision: {fileID: 5522593890583491402}
-        TrueState: Chase
-        FalseState: Patrol
-  - StateName: Chase
-    Actions:
-      array:
-      - {fileID: 9041453169185950149}
-    Transitions:
-      array:
       - Decision: {fileID: 1653767196762663037}
         TrueState: Attack
         FalseState: 
-      - Decision: {fileID: 5522593890583491402}
-        TrueState: 
-        FalseState: Reset
   - StateName: Attack
     Actions:
       array:
       - {fileID: 2454231819190372320}
     Transitions:
       array:
-      - Decision: {fileID: 1653767196762663037}
-        TrueState: Attack
-        FalseState: Chase
-  - StateName: Reset
-    Actions:
-      array:
-      - {fileID: 4540018179498707943}
-    Transitions:
-      array:
       - Decision: {fileID: 5203184628323988255}
-        TrueState: Patrol
-        FalseState: 
+        TrueState: 
+        FalseState: Attack
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -218,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 5857698221655752209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -79.05, y: -7.18, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3432912316064785959}
@@ -260,7 +239,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.081199646, y: -0.092032194}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -271,7 +250,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.0541382, y: 1.1840644}
   m_EdgeRadius: 0
 --- !u!114 &5857698221655752215
 MonoBehaviour:
@@ -327,7 +306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CharacterType: 1
   PlayerID: 
-  InitialFacingDirection: 1
+  InitialFacingDirection: 0
   DirectionOnSpawn: 0
   CharacterAnimator: {fileID: 6669552200913053105}
   UseDefaultMecanim: 1
@@ -605,7 +584,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  InitialWeapon: {fileID: 114000010616902070, guid: 7267e068aa3dc6040bfd43c86556488a,
+  InitialWeapon: {fileID: 114066937058401760, guid: ea820d0856eb9de42ac7162886c32d38,
     type: 3}
   CanPickupWeapons: 1
   WeaponAttachment: {fileID: 0}
@@ -743,6 +722,7 @@ GameObject:
   - component: {fileID: 9041453169185950149}
   - component: {fileID: 2454231819190372320}
   - component: {fileID: 2357321109526804152}
+  - component: {fileID: 1157091985265963853}
   m_Layer: 13
   m_Name: AiAction
   m_TagString: Untagged
@@ -854,3 +834,17 @@ MonoBehaviour:
   ObstaclesDetectionRaycastLength: 0.5
   ObstaclesDetectionRaycastOrigin: {x: 0.5, y: 0}
   ResetPositionOnDeath: 1
+--- !u!114 &1157091985265963853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6108893865868597038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3480ba3c629dce24b93ebe154614b75b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: Pattern01

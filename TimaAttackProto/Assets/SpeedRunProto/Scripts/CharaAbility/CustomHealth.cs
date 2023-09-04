@@ -6,7 +6,7 @@ public class CustomHealth : Health
 {
     public override void Damage(float damage, GameObject instigator, float flickerDuration, float invincibilityDuration, Vector3 damageDirection, List<TypedDamage> typedDamages = null)
     {
-        base.Damage(0.001f, instigator, flickerDuration, invincibilityDuration, damageDirection, typedDamages);
+        base.Damage(1f, instigator, flickerDuration, invincibilityDuration, damageDirection, typedDamages);
 
         if (instigator.transform.position.x > gameObject.transform.position.x)
         {
