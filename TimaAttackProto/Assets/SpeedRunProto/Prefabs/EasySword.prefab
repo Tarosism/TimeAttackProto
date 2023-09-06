@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4000013472678096}
   - component: {fileID: 114000010616902070}
-  - component: {fileID: -1076171593580416847}
   - component: {fileID: 6923250019142436415}
   m_Layer: 0
   m_Name: EasySword
@@ -44,16 +43,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000010407495960}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a557e2b93323f4831a62221b200348c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   TriggerMode: 1
   DelayBeforeUse: 0
-  DelayBeforeUseReleaseInterruption: 1
+  DelayBeforeUseReleaseInterruption: 0
   TimeBetweenUses: 1
-  TimeBetweenUsesReleaseInterruption: 1
+  TimeBetweenUsesReleaseInterruption: 0
   Interruptable: 0
   InitializeOnStart: 0
   UseBurstMode: 0
@@ -87,7 +86,7 @@ MonoBehaviour:
   IdleAnimationParameter: 
   StartAnimationParameter: 
   DelayBeforeUseAnimationParameter: 
-  SingleUseAnimationParameter: 
+  SingleUseAnimationParameter: Sword2
   UseAnimationParameter: 
   DelayBetweenUsesAnimationParameter: 
   StopAnimationParameter: 
@@ -157,10 +156,10 @@ MonoBehaviour:
   AreaSize: {x: 1, y: 1}
   ExistingDamageArea: {fileID: 0}
   InitialDelay: 0
-  ActiveDuration: 0.3
+  ActiveDuration: 0
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 512
   ApplyDamageOnTriggerEnter: 1
   ApplyDamageOnTriggerStay: 1
   MinDamageCaused: 0
@@ -168,138 +167,6 @@ MonoBehaviour:
   Knockback: 0
   KnockbackForce: {x: 10, y: 2}
   InvincibilityDuration: 0.5
---- !u!114 &-1076171593580416847
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1000010407495960}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53db1ded1f5362b4195f46f67dce9156, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TriggerMode: 1
-  DelayBeforeUse: 0
-  DelayBeforeUseReleaseInterruption: 0
-  TimeBetweenUses: 0.01
-  TimeBetweenUsesReleaseInterruption: 1
-  Interruptable: 0
-  InitializeOnStart: 0
-  UseBurstMode: 0
-  BurstLength: 3
-  BurstTimeBetweenShots: 0.1
-  MagazineBased: 0
-  MagazineSize: 30
-  AutoReload: 0
-  ReloadTime: 2
-  AmmoConsumedPerShot: 1
-  AutoDestroyWhenEmpty: 0
-  AutoDestroyWhenEmptyDelay: 1
-  CurrentAmmoLoaded: 0
-  WeaponAttachmentOffset: {x: 1, y: 0, z: 0}
-  FlipWeaponOnCharacterFlip: 1
-  FlipValue: {x: -1, y: 1, z: 1}
-  LeftHandHandle: {fileID: 0}
-  RightHandHandle: {fileID: 0}
-  ModifyMovementWhileEquipped: 0
-  PermanentMovementMultiplier: 0
-  ModifyMovementWhileAttacking: 0
-  MovementMultiplier: 0
-  AlwaysResetMultiplierToInitial: 1
-  PreventHorizontalGroundMovementWhileInUse: 0
-  PreventHorizontalAirMovementWhileInUse: 0
-  SetForceWhileInUse: 0
-  ForceWhileInUse: {x: 0, y: 0}
-  Animators: []
-  MirrorCharacterAnimatorParameters: 0
-  EquippedAnimationParameter: 
-  IdleAnimationParameter: 
-  StartAnimationParameter: 
-  DelayBeforeUseAnimationParameter: 
-  SingleUseAnimationParameter: 
-  UseAnimationParameter: 
-  DelayBetweenUsesAnimationParameter: 
-  StopAnimationParameter: 
-  ReloadStartAnimationParameter: 
-  ReloadAnimationParameter: 
-  ReloadStopAnimationParameter: 
-  WeaponAngleAnimationParameter: 
-  WeaponAngleRelativeAnimationParameter: 
-  WeaponStartMMFeedback: {fileID: 0}
-  WeaponUsedMMFeedback: {fileID: 0}
-  WeaponStopMMFeedback: {fileID: 0}
-  WeaponReloadMMFeedback: {fileID: 0}
-  WeaponReloadNeededMMFeedback: {fileID: 0}
-  WeaponOnHitFeedback: {fileID: 0}
-  WeaponOnMissFeedback: {fileID: 0}
-  WeaponOnHitDamageableFeedback: {fileID: 0}
-  WeaponOnHitNonDamageableFeedback: {fileID: 0}
-  WeaponOnKillFeedback: {fileID: 0}
-  ApplyRecoilOnUse: 0
-  RecoilOnUseProperties:
-    RecoilForceGrounded: 10
-    RecoilForceAirborne: 10
-    RecoilAngleModifier: 0
-    DirectionMultiplier: {x: 1, y: 1}
-    RecoilStyle: 2
-    Delay: 0
-    RecoilFeedback: {fileID: 0}
-  ApplyRecoilOnHitDamageable: 0
-  RecoilOnHitDamageableProperties:
-    RecoilForceGrounded: 10
-    RecoilForceAirborne: 10
-    RecoilAngleModifier: 0
-    DirectionMultiplier: {x: 1, y: 1}
-    RecoilStyle: 2
-    Delay: 0
-    RecoilFeedback: {fileID: 0}
-  ApplyRecoilOnHitNonDamageable: 0
-  RecoilOnHitNonDamageableProperties:
-    RecoilForceGrounded: 10
-    RecoilForceAirborne: 10
-    RecoilAngleModifier: 0
-    DirectionMultiplier: {x: 1, y: 1}
-    RecoilStyle: 2
-    Delay: 0
-    RecoilFeedback: {fileID: 0}
-  ApplyRecoilOnMiss: 0
-  RecoilOnMissProperties:
-    RecoilForceGrounded: 10
-    RecoilForceAirborne: 10
-    RecoilAngleModifier: 0
-    DirectionMultiplier: {x: 1, y: 1}
-    RecoilStyle: 2
-    Delay: 0
-    RecoilFeedback: {fileID: 0}
-  ApplyRecoilOnKill: 0
-  RecoilOnKillProperties:
-    RecoilForceGrounded: 10
-    RecoilForceAirborne: 10
-    RecoilAngleModifier: 0
-    DirectionMultiplier: {x: 1, y: 1}
-    RecoilStyle: 2
-    Delay: 0
-    RecoilFeedback: {fileID: 0}
-  MeleeDamageAreaMode: 0
-  DamageAreaShape: 0
-  AreaOffset: {x: 0.8, y: 0}
-  AreaSize: {x: 0.7, y: 0.7}
-  ExistingDamageArea: {fileID: 0}
-  InitialDelay: 0
-  ActiveDuration: 1
-  TargetLayerMask:
-    serializedVersion: 2
-    m_Bits: 8192
-  ApplyDamageOnTriggerEnter: 1
-  ApplyDamageOnTriggerStay: 1
-  MinDamageCaused: 10
-  MaxDamageCaused: 0
-  Knockback: 0
-  KnockbackForce: {x: 10, y: 2}
-  InvincibilityDuration: 0.5
-  attackRange: 1
 --- !u!212 &6923250019142436415
 SpriteRenderer:
   m_ObjectHideFlags: 0

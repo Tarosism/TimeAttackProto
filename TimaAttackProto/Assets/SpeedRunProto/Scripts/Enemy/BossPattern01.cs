@@ -3,46 +3,36 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.CorgiEngine
 {
-    public class BossPattern01 : AIAction
+    public class BossPattern01 : AIActionShoot
     {
-        private CharacterHandleWeapon _weapon;
-        private int _numberOfShoots = 0;
+        public ComboWeapon comboWeapon; // 콤보 무기 인스턴스
 
         public override void Initialization()
         {
             base.Initialization();
-            _weapon = GetComponentInParent<CharacterHandleWeapon>();
+            comboWeapon = GetComponentInParent<ComboWeapon>(); // 콤보 무기 초기화
         }
 
-        public override void PerformAction()
+        protected override void Shoot()
         {
-            BossPattern();
-        }
-
-        private void BossPattern()
-        {
-            if (_numberOfShoots < 3)
+            base.Shoot();
+            if (_numberOfShoots < 1)
             {
-                _weapon.CurrentWeapon.TimeBetweenUses = 0.3f;
-                _weapon.ShootStart();
+                TargetHandleWeapon.ShootStart();
+                if (comboWeapon != null)
+                {
+                    Debug.Log("콤보 시작");
+                    comboWeapon.WeaponStarted(TargetHandleWeapon.CurrentWeapon); // 콤보 시작
+                }
+                _numberOfShoots++;
             }
             else
             {
-
+                if (comboWeapon != null)
+                {
+                    comboWeapon.WeaponStopped(TargetHandleWeapon.CurrentWeapon); // 콤보 종료 후 다음 무기로
+                }
             }
-
-        }
-
-        public override void OnEnterState()
-        {
-            base.OnEnterState();
-            _numberOfShoots = 0;
-        }
-
-        public override void OnExitState()
-        {
-            base.OnExitState();
-            _weapon.ForceStop();
         }
     }
 }
