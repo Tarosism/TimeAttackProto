@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5914908137648828445}
   - component: {fileID: 995686478607749610}
+  - component: {fileID: 1735177303394327591}
   m_Layer: 13
   m_Name: AiAction
   m_TagString: Untagged
@@ -80,6 +81,22 @@ MonoBehaviour:
   InitializationMode: 0
   Label: 
   NumberOfJumps: 3
+--- !u!114 &1735177303394327591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3557118440546360257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62551b5a83ad0f54d82b57d4178af111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationMode: 0
+  Label: 
+  NewAIBrain: {fileID: 6550125758769670951}
+  KeepTarget: 0
 --- !u!1 &3680252983510838348
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2549212761750992129}
   - component: {fileID: 7469041522878927800}
+  - component: {fileID: 143626860142122000}
   m_Layer: 13
   m_Name: AiDecision
   m_TagString: Untagged
@@ -127,6 +145,20 @@ MonoBehaviour:
   Label: 
   AfterTimeMin: 1
   AfterTimeMax: 1
+--- !u!114 &143626860142122000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3680252983510838348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5371314e4a9de184b9909fd2d8a5b54b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: 
+  GroundedBufferDelay: 0.8
 --- !u!1 &4736876939103742374
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,7 +212,19 @@ MonoBehaviour:
       array:
       - {fileID: 995686478607749610}
     Transitions:
-      array: []
+      array:
+      - Decision: {fileID: 143626860142122000}
+        TrueState: SwapBrain
+        FalseState: 
+  - StateName: SwapBrain
+    Actions:
+      array:
+      - {fileID: 1735177303394327591}
+    Transitions:
+      array:
+      - Decision: {fileID: 0}
+        TrueState: 
+        FalseState: 
   TimeInThisState: 0
   Target: {fileID: 0}
   _lastKnownTargetPosition: {x: 0, y: 0, z: 0}
@@ -379,7 +423,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.081199646, y: -0.092032194}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.28866667}
@@ -390,7 +434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0541382, y: 1.1840644}
+  m_Size: {x: 1.08, y: 1.44}
   m_EdgeRadius: 0
 --- !u!114 &5857698221655752215
 MonoBehaviour:
@@ -691,7 +735,7 @@ MonoBehaviour:
   BlockingMovementStates: 
   BlockingConditionStates: 
   BlockingWeaponStates: 
-  NumberOfJumps: 2
+  NumberOfJumps: 3
   JumpHeight: 3.025
   JumpRestrictions: 2
   ResetCameraOffsetOnJump: 0
