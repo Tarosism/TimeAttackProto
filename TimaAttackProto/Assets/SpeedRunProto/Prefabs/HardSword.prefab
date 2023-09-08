@@ -183,7 +183,7 @@ MonoBehaviour:
   TriggerMode: 1
   DelayBeforeUse: 0
   DelayBeforeUseReleaseInterruption: 0
-  TimeBetweenUses: 0.01
+  TimeBetweenUses: 1
   TimeBetweenUsesReleaseInterruption: 1
   Interruptable: 0
   InitializeOnStart: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   StartAnimationParameter: 
   DelayBeforeUseAnimationParameter: 
   SingleUseAnimationParameter: 
-  UseAnimationParameter: 
+  UseAnimationParameter: Rolling
   DelayBetweenUsesAnimationParameter: 
   StopAnimationParameter: 
   ReloadStartAnimationParameter: 
