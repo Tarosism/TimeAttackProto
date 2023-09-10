@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 namespace MoreMountains.Tools
 {
     //! AI action으로 원거리 무기를 스왑할 때, obj pooler가 중복해 생성되는 걸 방지합니다
-    //! 원거리 무기 simplepooler에 대신 넣어주세요 
+    //! 원거리 무기 simplepooler에 대신 넣어주세요
+    //* 그냥 ObjPooler가 여러개 생기는 모든 상황에 넣으면 됨
     public class CustomSimpleObjPooler : MMSimpleObjectPooler
     {
         public override void FillObjectPool()

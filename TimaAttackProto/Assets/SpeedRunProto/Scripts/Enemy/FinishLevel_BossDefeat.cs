@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using MoreMountains.Tools;
+
 namespace MoreMountains.CorgiEngine
 {
     public class FinishLevel_BossDefeat : Health
@@ -8,10 +9,8 @@ namespace MoreMountains.CorgiEngine
         public string LevelName;
         public int BossName;
 
-        public GameObject gatePrefab;
-        public GameObject currentGate;
-        public Vector3 gatePosition;
-        public LevelSelector levelSelector;
+        // 게이트 게임 오브젝트에 대한 참조를 추가합니다.
+        public GameObject gateGameObject;
 
         public override void Kill()
         {
@@ -31,18 +30,21 @@ namespace MoreMountains.CorgiEngine
 
         protected void OpenNextGate()
         {
-            if (gatePrefab != null)
+            // gateGameObject가 null이 아니라면, 게이트를 활성화합니다.
+            if (gateGameObject != null)
             {
-                currentGate = Instantiate(gatePrefab, gatePosition, Quaternion.identity);
-
-                FinishLevel finishLevel = currentGate.GetComponent<FinishLevel>();
+                gateGameObject.SetActive(true);
+                FinishLevel finishLevel = gateGameObject.GetComponent<FinishLevel>();
                 if (finishLevel != null)
                 {
                     finishLevel.LevelName = LevelName;
                     //MMEventManager.TriggerEvent(new MMGameEvent("Save"));
                 }
             }
-            else return;
+            else
+            {
+                Debug.LogWarning("Gate GameObject is not assigned.");
+            }
         }
     }
 }

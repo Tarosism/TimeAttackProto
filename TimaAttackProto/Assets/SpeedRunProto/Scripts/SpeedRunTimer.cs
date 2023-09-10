@@ -81,7 +81,6 @@ public class SpeedRunTimer : MonoBehaviour
 
         // Load the last records at the start of the game
         DisplayLastRecord();
-        //DisplayLastRecord();
         startTime = 0f;
         sessionStartTime = Time.time;
         startRealTime = Time.realtimeSinceStartup;
@@ -103,22 +102,14 @@ public class SpeedRunTimer : MonoBehaviour
             Event previousEvent = lastRecords.Find(e => e.eventName == newEvent.eventName);
             eventP8Texts[eventIndex].text = $"{newEvent.endTime - previousEvent.endTime:F1}";
         }
-
-        //isEventFinished = true;
         CheckBestRecord();
     }
 
     // 특정 이벤트 완료 시간 출력
     void Update()
     {
-        // if (isFirstFrame)
-        // {
-        //     isFirstFrame = false;
-        //     return;
-        // }
         if (isTimerActive)
         {
-            //startTime += Time.unscaledDeltaTime;
             startTime = Time.realtimeSinceStartup - startRealTime;
 
             realTimeText.text = $"{startTime:F1}";

@@ -39,9 +39,18 @@ namespace MoreMountains.Tools
                 MMEventManager.TriggerEvent(e);
             }
         }
-        //이벤트를 위한
+        //!이벤트를 위한
         public static event Action OnLoadingStarted;
         public static event Action OnLoadingCompleted;
+        //!이벤트를 위한
+        //?매 로딩마다 팁을 띄웁니다
+        public List<string> DialogueScripts = new List<string>
+{
+    "팁 1: 장애물을 피하세요!",
+    "팁 2: 보너스 아이템을 찾으세요!",
+    "팁 3: 시간을 효율적으로 활용하세요!",
+};
+        //?매 로딩마다 팁을 띄웁니다
 
         [Header("Binding")]
         /// The name of the scene to load while the actual target scene is loading (usually a loading screen)
@@ -86,7 +95,7 @@ namespace MoreMountains.Tools
             Application.backgroundLoadingPriority = ThreadPriority.High;
             if (LoadingScreenSceneName != null)
             {
-                OnLoadingStarted?.Invoke();  // 이 줄 추가
+                OnLoadingStarted?.Invoke();  //! 이 줄 추가
                 LoadingSceneEvent.Trigger(sceneToLoad, LoadingStatus.LoadStarted);
                 SceneManager.LoadScene(LoadingScreenSceneName);
             }
@@ -101,7 +110,7 @@ namespace MoreMountains.Tools
             _sceneToLoad = sceneToLoad;
             Application.backgroundLoadingPriority = ThreadPriority.High;
             SceneManager.LoadScene(loadingSceneName);
-            OnLoadingStarted?.Invoke();  // 이 줄 추가
+            OnLoadingStarted?.Invoke();  //! 이 줄 추가
 
         }
 
@@ -113,7 +122,12 @@ namespace MoreMountains.Tools
             _tween = new MMTweenType(MMTween.MMTweenCurve.EaseOutCubic);
             _progressBarImage = LoadingProgressBar.GetComponent<Image>();
 
-            _loadingTextValue = LoadingText.text;
+            //!랜덤 다이스 후 띄우기
+            System.Random rand = new System.Random();
+            int index = rand.Next(DialogueScripts.Count);
+            LoadingText.text = DialogueScripts[index];
+            //!랜덤 다이스 후 띄우기
+
             if (!string.IsNullOrEmpty(_sceneToLoad))
             {
                 StartCoroutine(LoadAsynchronously());

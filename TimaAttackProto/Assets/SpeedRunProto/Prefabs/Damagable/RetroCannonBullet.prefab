@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 114000013697282846}
   - component: {fileID: 114000012788668036}
   - component: {fileID: 114000010281602892}
-  m_Layer: 16
+  m_Layer: 12
   m_Name: RetroCannonBullet
   m_TagString: Untagged
   m_Icon: {fileID: 1177953632, guid: 0000000000000000d000000000000000, type: 0}
@@ -105,11 +105,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   LifeTime: 5
-  FaceDirection: 1
+  FaceDirection: 0
   Speed: 50
   Acceleration: 0
-  Direction: {x: -1, y: 0, z: 0}
-  DirectionCanBeChangedBySpawner: 1
+  Direction: {x: 0, y: 1, z: 0}
+  DirectionCanBeChangedBySpawner: 0
   FlipValue: {x: -1, y: 1, z: 1}
   ProjectileIsFacingRight: 1
   InitialInvulnerabilityDuration: 0
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetLayerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 768
   ApplyDamageOnTriggerEnter: 1
   ApplyDamageOnTriggerStay: 1
   MinDamageCaused: 10
@@ -176,7 +176,7 @@ MonoBehaviour:
   InitialHealth: 10
   MaximumHealth: 10
   Invulnerable: 0
-  ImmuneToDamage: 0
+  ImmuneToDamage: 1
   DamageFeedbacks: {fileID: 0}
   FeedbackIsProportionalToDamage: 0
   FlickerSpriteOnHit: 1
