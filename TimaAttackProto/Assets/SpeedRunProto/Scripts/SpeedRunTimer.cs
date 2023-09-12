@@ -37,6 +37,7 @@ public class SpeedRunTimer : MonoBehaviour
 
     // 타이머 활성화 플래그
     public bool isTimerActive = true;
+    float loadingDelay;
     //save, load를 위한 key
     private const string BestRecordKey = "BestRecord";
     //시간을 초기화하기 위한
@@ -44,7 +45,6 @@ public class SpeedRunTimer : MonoBehaviour
     //메모리 절약을 위해 이전 기록을 start에서 먼저 불러옴
     public static List<Event> lastRecords = null;
 
-    //bool isFirstFrame = true;
     float startRealTime;
     // 싱글톤 인스턴스 설정
     void Awake()
@@ -108,9 +108,13 @@ public class SpeedRunTimer : MonoBehaviour
     // 특정 이벤트 완료 시간 출력
     void Update()
     {
+        if (!isTimerActive)
+        {
+            //!여길 채워 넣으세요
+        }
         if (isTimerActive)
         {
-            startTime = Time.realtimeSinceStartup - startRealTime;
+            startTime = Time.realtimeSinceStartup - startRealTime - loadingDelay;
 
             realTimeText.text = $"{startTime:F1}";
         }

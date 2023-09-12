@@ -1,12 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using MoreMountains.Tools;
+using System;
 
 public class TimeTextParent : MonoBehaviour
 {
     public static TimeTextParent instance;
+
+    public GameObject timerTextCanvas; // TimerTextCanvas 게임 오브젝트를 여기에 드래그 앤 드롭하여 할당하세요.
+
     void Awake()
     {
         if (instance == null)
@@ -19,9 +20,9 @@ public class TimeTextParent : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void Start()
     {
-        //DontDestroyOnLoad(gameObject);
         MMSceneLoadingManager.OnLoadingStarted += HideUI;
         MMSceneLoadingManager.OnLoadingCompleted += ShowUI;
     }
@@ -34,12 +35,21 @@ public class TimeTextParent : MonoBehaviour
 
     public void ShowUI()
     {
-        gameObject.SetActive(true);
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(true);
+        }
     }
 
     public void HideUI()
     {
-        gameObject.SetActive(false);
+        // UICamera의 모든 자식 오브젝트를 순회하며 비활성화
+        foreach (Transform child in transform)
+        {
+            if (child.gameObject != timerTextCanvas)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
     }
-
 }
